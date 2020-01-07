@@ -1,0 +1,12 @@
+{
+    "name": "ahron/hospital_management",
+    "authors": [
+        {
+            "name": "Md Ahsanul Hoque",
+            "email": "ahsan90@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "illuminate/database": "^6.8"
+    }
+}
