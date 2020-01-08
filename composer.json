@@ -7,6 +7,10 @@
         }
     ],
     "require": {
-        "illuminate/database": "^6.8"
+        "illuminate/database": "^6.8",
+        "illuminate/events": "^6.10"
+    },
+    "autoload": {
+        "files": ["app/config/dbConn.php"]
     }
 }
