@@ -37,6 +37,7 @@ Manager::schema()->create('patient_med_info', function($table){
     $table->string('weight');
     $table->string('height');
     $table->string('last_visited');
+    $table->text('notes');
     $table->integer('patient_id');
     $table->timestamps();
 });
@@ -69,7 +70,6 @@ Manager::schema()->dropIfExists('schedules');
 Manager::schema()->create('schedules', function($table){
     $table->increments('id');
     $table->string('time');
-    $table->string('date');
     $table->timestamps();
 });
 
@@ -77,8 +77,10 @@ Manager::schema()->create('schedules', function($table){
 Manager::schema()->dropIfExists('users');
 Manager::schema()->create('users', function($table){
     $table->increments('id');
-    $table->string('email');
-    $table->string('healthCardNumber');
+    $table->string('email')->nullable(true);
+    $table->string('username')->nullable(true)->unique();
+    $table->string('password')->nullable(true)->unique();
+    $table->string('healthCardNumber')->nullable(true);
     $table->timestamps();
 });
 
@@ -86,9 +88,7 @@ Manager::schema()->create('users', function($table){
 Manager::schema()->dropIfExists('roles');
 Manager::schema()->create('roles', function($table){
     $table->increments('id');
-    $table->string('admin');
-    $table->string('staff');
-    $table->string('patient');
+    $table->string('roleType');
     $table->timestamps();
 });
 
@@ -104,10 +104,3 @@ Manager::schema()->create('role_user', function($table){
     $table->integer('role_id')->unsigned();
     $table->integer('user_id')->unsigned();
 });
-
-//Manager::schema()->dropIfExists('users');
-// Manager::schema()->create('users', function ($table) {
-//     $table->increments('id');
-//     $table->string('email')->unique();
-//     $table->timestamps();
-// });

@@ -8,9 +8,11 @@
     ],
     "require": {
         "illuminate/database": "^6.8",
-        "illuminate/events": "^6.10"
+        "illuminate/events": "^6.10",
+        "fzaninotto/faker": "^1.9"
     },
     "autoload": {
-        "files": ["app/config/dbConn.php"]
+        "files": ["app/config/dbConn.php"],
+        "classmap": ["app/models","app/helpers"]
     }
 }

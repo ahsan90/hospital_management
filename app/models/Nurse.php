@@ -1,14 +1,13 @@
 <?php
 use Illuminate\Database\Eloquent\Model;
 
-class Patient extends Model{
-    protected $table = 'patients';
+class Nurse extends Model
+{
+    protected $table = 'nurses';
     protected $guarded = [];
 
-    public function savePatient($name, $healCardNo, $dob, $phone, $email, $address){
+    public function saveNurseInfo($name, $phone, $email, $address){
         $this->name = $name;
-        $this->healthCardNumber = $healCardNo;
-        $this->dob = $dob;
         $this->phone = $phone;
         $this->email = $email;
         $this->address = $address;
