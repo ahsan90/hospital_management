@@ -93,10 +93,7 @@ Manager::schema()->create('roles', function($table){
 });
 
 
-
-
-
-//joing table for users and roles(many to many relationship)
+//joining table for users and roles(many to many relationship)
 
 Manager::schema()->dropIfExists('role_user');
 Manager::schema()->create('role_user', function($table){

@@ -51,7 +51,7 @@ class DbSeed
         $user->save();
     }
 
-    //create shedule data for appointment table
+    //create schedule data for appointment table
     public static function scheduleSeedData(){
         $startTime = 9.00;
         $endTime = 17.00;
