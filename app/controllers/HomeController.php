@@ -3,9 +3,10 @@
 
 
 //extends BaseController
-class HomeController
+class HomeController extends BaseController
 {
     public function index(){
-        echo "Hello from home/index controller";
+        //echo "Hello from home/index controller";
+        $this->render('home/index', "Ahsan");
     }
 }

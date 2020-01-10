@@ -7,4 +7,10 @@ class BaseController
     {
         echo $model;
     }
+
+    public function render($view, $data = null)
+    {
+        require_once './app/views/' . $view . '.php';
+        return $view;
+    }
 }
