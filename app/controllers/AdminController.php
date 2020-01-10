@@ -1,7 +1,7 @@
 <?php
-require '../../vendor/autoload.php';
+//require '../../vendor/autoload.php';
 
-class AdminController
+class AdminController extends BaseController
 {
     public function index(){
         echo 'admin/index';

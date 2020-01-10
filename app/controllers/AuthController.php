@@ -1,7 +1,7 @@
 <?php
 
 
-class AuthController
+class AuthController extends BaseController
 {
 
 }

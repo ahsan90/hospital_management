@@ -2,4 +2,6 @@
 
 require './vendor/autoload.php';
 
-$app = new App;
+//require_once './app/base/Route.php';
+
+$app = new Route();
