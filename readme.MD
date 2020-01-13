@@ -2,7 +2,7 @@
 Run the following command(s) before running the application-
 
 $composer install \
-$composer update \
+$composer update 
 
 
 
