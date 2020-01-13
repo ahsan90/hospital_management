@@ -1,1 +1,5 @@
-@import '../../node_modules/calender/calender.css'
+
+body{
+    margin: 0 auto;
+    max-width: 90%;
+}

@@ -12,7 +12,7 @@
         "fzaninotto/faker": "^1.9"
     },
     "autoload": {
-        "files": ["app/config/dbConn.php","app/config/routes.php"],
+        "files": ["app/config/dbConn.php"],
         "classmap": ["app/models","app/helpers","app/base"]
     }
 }

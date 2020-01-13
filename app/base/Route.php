@@ -12,6 +12,8 @@ class Route
 
     public function __construct()
     {
+        require_once './app/views/layout/header.php';
+
         $url = $this->parseUrl();
 
         if (file_exists('./app/controllers/' .$url[0].'.php')){
@@ -33,6 +35,14 @@ class Route
         }
         $this->params = $url ? array_values($url) : [];
         call_user_func_array([$this->controller, $this->method], $this->params);
+        //echo $_SERVER['SERVER_NAME'];
+
+        if (!isset($_GET['url'])){
+            $_GET['url']  = '/';
+        }
+        //echo $_GET['url'];
+
+        require_once './app/views/layout/footer.php';
     }
 
     public function parseUrl()

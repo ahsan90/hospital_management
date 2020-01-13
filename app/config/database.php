@@ -54,14 +54,14 @@ Manager::schema()->create('nurses', function($table){
 });
 
 
-//create appoinments table
-Manager::schema()->dropIfExists('appoinments');
-Manager::schema()->create('appoinments', function($table){
+//create appointments table
+Manager::schema()->dropIfExists('appointments');
+Manager::schema()->create('appointments', function($table){
     $table->increments('id');
     $table->string('time');
     $table->string('date');
     $table->integer('doctor_id')->nullable(false);
-    $table->string('patient_id')->nullable(false);
+    $table->integer('patient_id')->nullable(false);
     $table->timestamps();
 });
 
