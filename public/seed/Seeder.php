@@ -1,5 +1,7 @@
 <?php
-class DbSeed
+
+
+class Seeder
 {
     //seed doctor data
     public static function doctorsDbSeed(){
@@ -12,7 +14,6 @@ class DbSeed
         $newDoctor->address = $faker->address;
         $newDoctor->save();
     }
-
     //seed patient data
     public static function patientDbSeed(){
         $faker = Faker\Factory::create();
@@ -20,16 +21,13 @@ class DbSeed
         $dobRange = $faker->dateTimeBetween('-150 years', 'now');
         $newPatient->savePatient($faker->name, $faker->randomNumber(8),
             $dobRange, $faker->phoneNumber, $faker->email, $faker->address);
-
     }
-
     //seed nurse data
     public static function nurseDbSeed(){
         $faker = Faker\Factory::create();
         $nurse = new Nurse();
         $nurse->saveNurseInfo($faker->name, $faker->phoneNumber, $faker->email, $faker->address);
     }
-
     //seed for role data
     public static function roleDbSeed(){
         $roles = array('admin', 'staff', 'patient');
@@ -39,18 +37,15 @@ class DbSeed
             $newRole->save();
         }
     }
-
     //create an Admin user for test
     public static function createAdminUser(){
         $username = 'cisAdmin';
         $password = 'cispassword';
-
         $user = new User();
         $user->username = $username;
         $user->password = md5($password);
         $user->save();
     }
-
     //create schedule data for appointment table
     public static function scheduleSeedData(){
         $startTime = 9.00;
@@ -62,14 +57,13 @@ class DbSeed
             $schedule->save();
         }
     }
-
     //this method provides seed data to database
     public static function loadSeed(){
         for ($i = 0; $i<=15; $i++){
             self::doctorsDbSeed();
         }
         for ($i=0; $i <= 50; $i++){
-            DbSeed::nurseDbSeed();
+            self::nurseDbSeed();
         }
         for ($i = 0; $i<=200; $i++){
             self::patientDbSeed();

@@ -1,19 +1,21 @@
 <?php
 
 
-class DoctorController extends BaseController
+class DoctorController extends Controller
 {
-    public function list()
+    public function __construct($controller, $action)
     {
-        $doctors = Doctor::all();
-        $this->render('doctor/list', $doctors);
-    }
-    public function profile(){
-        $this->render('doctor/profile');
+        parent::__construct($controller, $action);
     }
 
-    public function edit($id){
-        $this->render('doctor/edit', null);
+    public function profileAction(){
+        $this->view->render('doctor/profile.php');
+    }
+    public function listingAction(){
+        $this->view->render('doctor/list', Doctor::all());
     }
 
+	public function editAction($id){
+        $this->view->render('doctor/edit', Doctor::all()->find($id));
+    }
 }

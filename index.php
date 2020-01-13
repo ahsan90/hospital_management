@@ -1,12 +1,33 @@
 <?php
 
-require './vendor/autoload.php';
+require_once './vendor/autoload.php';
 
-//require_once './app/base/Route.php';
-//require_once ''.FileHelper::HEADER.'';
-//require_once './app/views/layout/header.php';
+define('DS', DIRECTORY_SEPARATOR);
+define('ROOT', dirname(__FILE__));
+//echo $_SERVER['PATH_INFO']; die();
 
+//load configuration and helper functions
+require_once (ROOT . DS .'config'. DS . 'config.php');
+require_once(ROOT . DS . 'app' . DS . 'lib' . DS . 'helpers' . DS . 'functions.php');
 
-$app = new Route();
+function autoload($className){
+    if (file_exists(ROOT . DS . 'core' . DS . $className . '.php')){
+        require_once (ROOT . DS . 'core' . DS . $className . '.php');
+    }elseif (file_exists(ROOT . DS . 'app'. DS . 'controllers' . DS . $className . '.php')){
+        require_once (ROOT . DS . 'app'. DS . 'controllers' . DS . $className . '.php');
+    }elseif (file_exists(ROOT . DS . 'app'. DS . 'models' . DS . $className . '.php')){
+        require_once (ROOT . DS . 'app'. DS . 'models' . DS . $className . '.php');
+    }
+}
 
-//require_once './app/views/layout/footer.php';
+spl_autoload_register('autoload');
+
+session_start();
+
+$url = isset($_SERVER['PATH_INFO']) ? explode('/', ltrim($_SERVER['PATH_INFO'], '/')) : [];
+
+//set database connection
+//DbConnection::setDbConnection();
+
+Router::route($url);
+//require_once (ROOT . DS . 'core' . DS . 'bootstrap.php');

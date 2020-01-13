@@ -1,7 +1,9 @@
 <?php
 //$doctors = $data;
-
 //require_once './app/views/layout/header.php';
+$this->setSiteTitle('Doctor listing');
+
+$this->start('body');
 if ($data != null){
     ?>
 
@@ -20,12 +22,12 @@ if ($data != null){
         <?php
         foreach ($data as $doctor) {
             echo "<tr>";
-                echo "<td>$doctor->name</td>";
-                echo "<td>$doctor->specialization</td>";
-                echo "<td>$doctor->phone</td>";
-                echo "<td>$doctor->email</td>";
-                echo "<td>$doctor->address</td>";
-                echo "<td><a href='./edit/" . $doctor->id. "' title='Edit Record' class='btn btn-warning btn-xs btnMargin' data-toggle='tooltip'><i class='fa fa-edit'></i></a></td>";
+            echo "<td>$doctor->name</td>";
+            echo "<td>$doctor->specialization</td>";
+            echo "<td>$doctor->phone</td>";
+            echo "<td>$doctor->email</td>";
+            echo "<td>$doctor->address</td>";
+            echo "<td><a href='./edit/" . $doctor->id. "' title='Edit Record' class='btn btn-warning btn-xs btnMargin' data-toggle='tooltip'><i class='fa fa-edit'></i></a></td>";
             echo "</tr>";
         }
         ?>
@@ -37,6 +39,5 @@ if ($data != null){
 }else{
     echo "<h2>No record found...!</h2>";
 }
- //require_once './app/views/layout/footer.php';
-
+$this->end();
 ?>

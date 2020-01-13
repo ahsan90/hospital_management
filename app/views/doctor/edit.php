@@ -1,5 +1,6 @@
-<?php
+<?php $this->setSiteTitle("Edit doctor's profile"); ?>
+<?php $this->start('body'); ?>
 
-//require_once './app/views/layout/header.php';
-echo "<h2>Edit doctor's profile</h2>";
-//require_once './app/views/layout/footer.php';
+<h2>Edit doctors profile</h2>
+
+<?php $this->end(); ?>

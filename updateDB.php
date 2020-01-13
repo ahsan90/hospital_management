@@ -1,10 +1,9 @@
 <?php
 
-require './vendor/autoload.php';
+require_once './vendor/autoload.php';
 
-require ('./app/config/database.php');
-//require_once ('./seedDb.php');
+//DbConnection::setDbConnection();
 
-DbSeed::loadSeed();
+require_once './config/database.php';
 
-//php -S localhost:3000;
+Seeder::loadSeed();

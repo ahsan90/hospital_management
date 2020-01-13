@@ -3,11 +3,10 @@ Options -MultiViews
 
 RewriteEngine On
 
-RewriteBase /hospital_management/
-
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond $1 !^(config|core|public)
 
 
-RewriteRule ^(.*)$ index.php/?url=$1 [NC,L,QSA]
+RewriteRule ^(.*)$ index.php/$1 [NC,L,QSA]
 

@@ -1,6 +1,5 @@
+<?php $this->start('body'); ?>
+<h1 class="text-center red">Welcome to DOUCH Health care system...</h1>
+<?php $this->end(); ?>
 
-<?php
 
-    echo "<h2>Hello from home/index view </h2>";
-    echo $data;
-    ?>
