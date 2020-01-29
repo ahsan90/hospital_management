@@ -1,7 +1,7 @@
 <?php
 
 
-class Home extends Controller
+class HomeController extends Controller
 {
     public function __construct($controller, $action)
     {

@@ -2,7 +2,7 @@
 <?php
 define('DEBUG', true);
 
-define('DEFAULT_CONSTRUCTOR', 'Home');
+define('DEFAULT_CONSTRUCTOR', 'HomeController');
 
 define('DEFAULT_LAYOUT', 'default');
 

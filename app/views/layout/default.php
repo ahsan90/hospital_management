@@ -29,7 +29,7 @@
                             <a class="nav-link" href="<?=SROOT?>">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?=SROOT?>doctorcontroller/listing">Doctor List</a>
+                            <a class="nav-link" href="<?=SROOT?>doctor/listing">Doctor List</a>
                         </li>
 
                     </ul>
