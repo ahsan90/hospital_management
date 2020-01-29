@@ -30,9 +30,11 @@ class Seeder
     }
     //seed for role data
     public static function roleDbSeed(){
-        $roles = array('admin', 'staff', 'patient');
-        foreach ($roles as  $role){
+        //$id = array()
+        $roles = array('1'=>'admin', '2'=> 'doctor', '3'=>'nurse', '4'=>'patient');
+        foreach ($roles as  $key=>$role){
             $newRole = new Role();
+            $newRole->id = (int)$key;
             $newRole->roleType = $role;
             $newRole->save();
         }
@@ -44,8 +46,10 @@ class Seeder
         $user = new User();
         $user->username = $username;
         $user->password = md5($password);
+        $user->role_id = 1;
         $user->save();
     }
+
     //create schedule data for appointment table
     public static function scheduleSeedData(){
         $startTime = 9.00;
@@ -59,6 +63,7 @@ class Seeder
     }
     //this method provides seed data to database
     public static function loadSeed(){
+        /*
         for ($i = 0; $i<=15; $i++){
             self::doctorsDbSeed();
         }
@@ -68,6 +73,7 @@ class Seeder
         for ($i = 0; $i<=200; $i++){
             self::patientDbSeed();
         }
+        */
         self::roleDbSeed();
         self::createAdminUser();
         self::scheduleSeedData();
