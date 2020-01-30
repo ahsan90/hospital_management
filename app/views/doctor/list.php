@@ -12,6 +12,7 @@ if ($data != null){
         <tr>
             <th>Name</th>
             <th>Specialization</th>
+            <th>Gender</th>
             <th>Phone</th>
             <th>Email</th>
             <th>Address</th>
@@ -24,6 +25,7 @@ if ($data != null){
             echo "<tr>";
             echo "<td>$doctor->name</td>";
             echo "<td>$doctor->specialization</td>";
+            echo "<td>$doctor->gender</td>";
             echo "<td>$doctor->phone</td>";
             echo "<td>$doctor->email</td>";
             echo "<td>$doctor->address</td>";

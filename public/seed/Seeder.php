@@ -6,9 +6,14 @@ class Seeder
     //seed doctor data
     public static function doctorsDbSeed(){
         $faker = Faker\Factory::create();
+        $gender = $faker->randomElement(['male', 'female']);
+        $role_id = Role::all()->where('id', 2)->first()->id;
+
         $newDoctor = new Doctor();
         $newDoctor->name = $faker->name;
+        $newDoctor->role_id = $role_id;
         $newDoctor->specialization = $faker->sentence;
+        $newDoctor->gender = $gender;
         $newDoctor->phone = $faker->phoneNumber;
         $newDoctor->email = $faker->email;
         $newDoctor->address = $faker->address;
@@ -66,10 +71,14 @@ class Seeder
     }
     //this method provides seed data to database
     public static function loadSeed(){
-        /*
+        self::roleDbSeed();
+        self::createAdminUser();
+        self::scheduleSeedData();
+
         for ($i = 0; $i<=15; $i++){
             self::doctorsDbSeed();
         }
+        /*
         for ($i=0; $i <= 50; $i++){
             self::nurseDbSeed();
         }
@@ -77,8 +86,7 @@ class Seeder
             self::patientDbSeed();
         }
         */
-        self::roleDbSeed();
-        self::createAdminUser();
-        self::scheduleSeedData();
+
+
     }
 }

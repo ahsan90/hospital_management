@@ -102,7 +102,7 @@ Manager::schema()->create('schedules', function($table){
 Manager::schema()->dropIfExists('roles');
 Manager::schema()->create('roles', function($table){
     $table->increments('id');
-    $table->integer('user_id')->nullable(true);
+    //$table->integer('user_id')->nullable(true);
     $table->string('roleType');
     $table->timestamps();
 });
