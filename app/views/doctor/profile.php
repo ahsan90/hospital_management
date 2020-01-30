@@ -1,0 +1,41 @@
+<?php
+$this->setSiteTitle('Doctor Profile');
+
+$this->start('body');
+?>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Specialization</th>
+        <th>Gender</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Role Type</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+        $doctor = $data;
+        echo "<tr>";
+        echo "<td>$doctor->name</td>";
+        echo "<td>$doctor->specialization</td>";
+        echo "<td>$doctor->gender</td>";
+        echo "<td>$doctor->phone</td>";
+        echo "<td>$doctor->email</td>";
+        echo "<td>$doctor->address</td>";
+        echo "<td>".Role::all()->where('id', $doctor->role_id)->first()->roleType."</td>";
+        echo "<td><a href='".SROOT."doctor/edit/" . $doctor->id. "' title='Edit Record' class='btn btn-warning btn-xs btnMargin' data-toggle='tooltip'><i class='fa fa-edit'></i></a></td>";
+        echo "</tr>";
+
+    ?>
+
+    </tbody>
+</table>
+
+<?php
+$this->end();
+?>

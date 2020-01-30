@@ -16,6 +16,7 @@ if ($data != null){
             <th>Phone</th>
             <th>Email</th>
             <th>Address</th>
+            <th>Role Type</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -29,7 +30,10 @@ if ($data != null){
             echo "<td>$doctor->phone</td>";
             echo "<td>$doctor->email</td>";
             echo "<td>$doctor->address</td>";
+            echo "<td>".Role::all()->where('id', $doctor->role_id)->first()->roleType."</td>";
             echo "<td><a href='./edit/" . $doctor->id. "' title='Edit Record' class='btn btn-warning btn-xs btnMargin' data-toggle='tooltip'><i class='fa fa-edit'></i></a></td>";
+            echo "<td><a href='".SROOT."doctor/profile/" . $doctor->id. "' title='Go to Profile' class='btn btn-warning btn-xs btnMargin' data-toggle='tooltip'><i class='fa fa-user'></i></a></td>";
+
             echo "</tr>";
         }
         ?>

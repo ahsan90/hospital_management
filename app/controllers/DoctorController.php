@@ -8,8 +8,8 @@ class DoctorController extends Controller
         parent::__construct($controller, $action);
     }
 
-    public function profileAction(){
-        $this->view->render('doctor/profile.php');
+    public function profileAction($id){
+        $this->view->render('doctor/profile', Doctor::all()->find($id));
     }
     public function listingAction(){
         $this->view->render('doctor/list', Doctor::all());

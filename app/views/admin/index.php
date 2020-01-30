@@ -5,9 +5,9 @@
 
     <div class="container">
         <a href="<?=SROOT?>admin/userList">Manage users</a><br>
-        <a href="<?=SROOT?>admin/doctorList">Manage Doctors</a><br>
-        <a href="<?=SROOT?>admin/nurseList">Manage Nurses</a><br>
-        <a href="<?=SROOT?>admin/patientList">Manage Patients</a>
+        <a href="<?=SROOT?>doctor/listing">Manage Doctors</a><br>
+        <a href="<?=SROOT?>nurse/listing">Manage Nurses</a><br>
+        <a href="<?=SROOT?>patient/listing">Manage Patients</a>
     </div>
 
 <?php $this->end(); ?>

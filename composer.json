@@ -13,6 +13,6 @@
     },
     "autoload": {
         "files": ["config/dbConnection.php"],
-        "classmap": ["public/seed","app/models"]
+        "classmap": ["public/seed","app/models", "core"]
     }
 }
