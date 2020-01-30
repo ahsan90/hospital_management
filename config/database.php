@@ -81,8 +81,8 @@ Manager::schema()->create('appointments', function($table){
 });
 
 //create appointment_history table
-Manager::schema()->dropIfExists('appointmentHistory');
-Manager::schema()->create('appointmentHistory', function ($table){
+Manager::schema()->dropIfExists('appointment_history');
+Manager::schema()->create('appointment_history', function ($table){
     $table->increments('id');
     $table->integer('appointment_id')->nullable(false);
     $table->integer('patient_id')->nullable(false);

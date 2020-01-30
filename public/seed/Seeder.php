@@ -32,8 +32,10 @@ class Seeder
     //seed nurse data
     public static function nurseDbSeed(){
         $faker = Faker\Factory::create();
+        $gender = $faker->randomElement(['male', 'female']);
+
         $nurse = new Nurse();
-        $nurse->saveNurseInfo($faker->name, $faker->phoneNumber, $faker->email, $faker->address);
+        $nurse->saveNurseInfo(3, $faker->name, $gender, $faker->phoneNumber, $faker->email, $faker->address);
     }
     //seed for role data
     public static function roleDbSeed(){
@@ -80,16 +82,13 @@ class Seeder
         for ($i = 0; $i<=15; $i++){
             self::doctorsDbSeed();
         }
-        /*
+
         for ($i=0; $i <= 50; $i++){
             self::nurseDbSeed();
         }
-        */
+
         for ($i = 0; $i<=200; $i++){
             self::patientDbSeed();
         }
-
-
-
     }
 }
