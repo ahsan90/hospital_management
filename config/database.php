@@ -7,7 +7,7 @@ Manager::schema()->dropIfExists('users');
 Manager::schema()->create('users', function($table){
     $table->increments('id');
     //$table->string('email')->nullable(true);
-    $table->integer('role_id')->nullable(false);
+    $table->integer('role_id');
     $table->string('username')->nullable(true)->unique();
     $table->string('password')->nullable(true)->unique();
     $table->timestamps();
@@ -102,6 +102,7 @@ Manager::schema()->create('schedules', function($table){
 Manager::schema()->dropIfExists('roles');
 Manager::schema()->create('roles', function($table){
     $table->increments('id');
+    $table->integer('user_id')->nullable(true);
     $table->string('roleType');
     $table->timestamps();
 });

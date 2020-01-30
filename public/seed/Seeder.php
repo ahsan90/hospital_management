@@ -36,6 +36,7 @@ class Seeder
             $newRole = new Role();
             $newRole->id = (int)$key;
             $newRole->roleType = $role;
+            //$newRole->user_id = 1;
             $newRole->save();
         }
     }
@@ -43,11 +44,13 @@ class Seeder
     public static function createAdminUser(){
         $username = 'cisAdmin';
         $password = 'cispassword';
+
         $user = new User();
         $user->username = $username;
         $user->password = md5($password);
-        $user->role_id = 1;
+        $user->role_id = Role::all()->where('roleType', 'admin')->first()->id;
         $user->save();
+
     }
 
     //create schedule data for appointment table

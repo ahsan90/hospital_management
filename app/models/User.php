@@ -8,4 +8,10 @@ class User extends Model
     public function role(){
         return $this->hasOne('Role');
     }
+
+    public function getRoleType(){
+        //$tempRole = self::find($id)->role;
+        //return $tempRole->roleType;
+        return Role::where('id', $this->user_id)->first()->roleType;
+    }
 }

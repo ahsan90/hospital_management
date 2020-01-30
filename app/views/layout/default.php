@@ -31,6 +31,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="<?=SROOT?>doctor/listing">Doctor List</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?=SROOT?>admin/index">Admin</a>
+                        </li>
 
                     </ul>
                 </div>
