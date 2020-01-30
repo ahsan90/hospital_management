@@ -24,8 +24,10 @@ class Seeder
         $faker = Faker\Factory::create();
         $newPatient = new Patient();
         $dobRange = $faker->dateTimeBetween('-150 years', 'now');
-        $newPatient->savePatient($faker->name, $faker->randomNumber(8),
-            $dobRange, $faker->phoneNumber, $faker->email, $faker->address);
+        $gender = $faker->randomElement(['male', 'female']);
+
+        $newPatient->savePatient(4, $faker->name, $faker->randomNumber(8),
+            $dobRange, $gender, $faker->phoneNumber, $faker->email, $faker->address);
     }
     //seed nurse data
     public static function nurseDbSeed(){
@@ -82,10 +84,11 @@ class Seeder
         for ($i=0; $i <= 50; $i++){
             self::nurseDbSeed();
         }
+        */
         for ($i = 0; $i<=200; $i++){
             self::patientDbSeed();
         }
-        */
+
 
 
     }
