@@ -9,7 +9,7 @@ class View
     {
     }
 
-    public function render($viewName, $data=[]){
+    public function render($viewName, $data=[], $msg = null){
         $viewAry = explode('/', $viewName);
         $viewString = implode(DS, $viewAry);
 

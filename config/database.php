@@ -7,9 +7,13 @@ Manager::schema()->dropIfExists('users');
 Manager::schema()->create('users', function($table){
     $table->increments('id');
     //$table->string('email')->nullable(true);
-    $table->integer('role_id');
-    $table->string('username')->nullable(true)->unique();
-    $table->string('password')->nullable(true)->unique();
+    //$table->integer('user_id')->nullable(true);
+    $table->integer('role_id')->nullable(false);
+    //$table->integer('patient_id')->nullable(true);
+    //$table->integer('doctor_id')->nullable(true);
+    //$table->integer('nurse_id')->nullable(true);
+    $table->string('username')->nullable(false)->unique();
+    $table->string('password')->nullable(false);
     $table->timestamps();
 });
 //Create doctors table on the database
@@ -30,6 +34,7 @@ Manager::schema()->dropIfExists('patients');
 Manager::schema()->create('patients', function($table){
     $table->increments('id');
     $table->integer('role_id')->nullable(false);
+    $table->integer('user_id')->nullable(false);
     $table->string('name');
     $table->string('healthCardNumber')->unique();
     $table->string('dob');

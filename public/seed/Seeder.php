@@ -22,12 +22,12 @@ class Seeder
     //seed patient data
     public static function patientDbSeed(){
         $faker = Faker\Factory::create();
-        $newPatient = new Patient();
+        //$newPatient = new Patient();
         $dobRange = $faker->dateTimeBetween('-150 years', 'now');
         $gender = $faker->randomElement(['male', 'female']);
+        $username = $faker->regexify('[A-Za-z0-9]{6}');
 
-        $newPatient->savePatient(4, $faker->name, $faker->randomNumber(8),
-            $dobRange, $gender, $faker->phoneNumber, $faker->email, $faker->address);
+        Patient::saveValidPatientInfo(4,$faker->name, $faker->randomNumber(8), $dobRange, $gender, $faker->phoneNumber, $faker->email, $faker->address, $username, "123");
     }
     //seed nurse data
     public static function nurseDbSeed(){
@@ -53,11 +53,13 @@ class Seeder
     public static function createAdminUser(){
         $username = 'cisAdmin';
         $password = 'cispassword';
+        $role_id = Role::all()->where('roleType', 'admin')->first()->id;
 
         $user = new User();
         $user->username = $username;
         $user->password = md5($password);
-        $user->role_id = Role::all()->where('roleType', 'admin')->first()->id;
+        $user->role_id = $role_id;
+        //$user->role_id = Role::all()->where('roleType', 'admin')->first()->id;
         $user->save();
 
     }
@@ -79,15 +81,15 @@ class Seeder
         self::createAdminUser();
         self::scheduleSeedData();
 
-        for ($i = 0; $i<=15; $i++){
-            self::doctorsDbSeed();
-        }
+//        for ($i = 0; $i<=15; $i++){
+//            self::doctorsDbSeed();
+//        }
+//
+//        for ($i=0; $i <= 50; $i++){
+//            self::nurseDbSeed();
+//        }
 
-        for ($i=0; $i <= 50; $i++){
-            self::nurseDbSeed();
-        }
-
-        for ($i = 0; $i<=200; $i++){
+        for ($i = 0; $i<=10; $i++){
             self::patientDbSeed();
         }
     }

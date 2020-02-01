@@ -27,17 +27,17 @@ class Router {
         //dnd($url);
     }
 
-    public static function redirect($location){
+    public static function redirect($location, $msg=null){
         if (!headers_sent()){
-            header('Location'.SROOT.$location);
-            exit();
+            header('Location:'.SROOT.$location);
+            exit;
         }else{
             echo '<script type="text/javascript">';
             echo 'window.location.href="'.SROOT.$location.'";';
             echo '</script>';
             echo '</noscript>';
             echo '<meta> http-equiv="refresh" content="0;url='.$location.'"/>';
-            echo '</noscript>';exit();
+            echo '</noscript>';exit;
         }
     }
 }

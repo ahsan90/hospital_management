@@ -9,10 +9,11 @@
     "require": {
         "illuminate/database": "^6.8",
         "illuminate/events": "^6.10",
-        "fzaninotto/faker": "^1.9"
+        "fzaninotto/faker": "^1.9",
+        "egulias/email-validator": "^2.1"
     },
     "autoload": {
         "files": ["config/dbConnection.php"],
-        "classmap": ["public/seed","app/models", "core"]
+        "classmap": ["public/seed","app/models", "core", "app/lib/helpers"]
     }
 }

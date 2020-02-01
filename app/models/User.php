@@ -1,4 +1,7 @@
 <?php
+
+//namespace Model;
+
 use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
@@ -6,8 +9,20 @@ class User extends Model
     protected $guarded = [];
 
     public function role(){
-        return $this->hasOne('Role');
+        return $this->belongsTo(Role::class);
     }
+
+//    public function patient(){
+//        return $this->belongsTo(Patient::class);
+//    }
+//
+//    public function doctor(){
+//        return $this->belongsTo(Doctor::class);
+//    }
+//
+//    public function nurse(){
+//        return $this->belongsTo(Nurse::class);
+//    }
 
     public function getRoleType(){
         //$tempRole = self::find($id)->role;
