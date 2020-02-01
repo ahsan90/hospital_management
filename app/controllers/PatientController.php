@@ -81,4 +81,34 @@ class PatientController extends Controller
     public function listingAction(){
         $this->view->render('patient/list', Patient::all());
     }
+
+    public function editAction($id){
+        //$patient = Patient::all()->find($id)->first();
+        $this->view->render('patient/edit', Patient::all()->find($id));
+    }
+
+    public function updateAction($id){
+        $name = Input::get('name');
+        $healCardNumber = Input::get('healthCardNumber');
+        $dob = Input::get('dob');
+        $gender = Input::get('gender');
+        $phone = Input::get('phone');
+        $email = Input::get('email');
+        $address = Input::get('address');
+
+        $patient = Patient::all()->find($id);
+
+        $patient->name = $name;
+        $patient->healthCardNumber = $healCardNumber;
+        $patient->dob = $dob;
+        $patient->gender = $gender;
+        $patient->phone = $phone;
+        $patient->email = $email;
+        $patient->address = $address;
+
+        $patient->save();
+
+        $_SESSION['msg'] = "<p class='alert alert-success'>Information saved successfully</p>";
+        Router::redirect('patient/profile/'.$id);
+    }
 }
