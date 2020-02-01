@@ -95,7 +95,7 @@ class DoctorController extends Controller
             $user = User::all()->find($user_id);
 
             $user->username = $username;
-            $user->password = $password;
+            $user->password = md5($password);
             $user->role_id = $role_id;
             //update users
             $user->update();
@@ -117,7 +117,7 @@ class DoctorController extends Controller
 
         }else{
             $_SESSION['msg'] = "<p class='alert alert-danger'>Forms contains errors</p>";
-            Router::redirect('doctor/edit');
+            Router::redirect('doctor/edit/'.$id);
         }
     }
 

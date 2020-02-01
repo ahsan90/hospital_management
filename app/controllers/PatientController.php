@@ -91,8 +91,10 @@ class PatientController extends Controller
         $email = Input::get('email');
         $address = Input::get('address');
 
+        //Find the patient
         $patient = Patient::all()->find($id);
 
+        //Update information
         $patient->name = $name;
         $patient->healthCardNumber = $healCardNumber;
         $patient->dob = $dob;
