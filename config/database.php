@@ -21,6 +21,7 @@ Manager::schema()->dropIfExists('doctors');
 Manager::schema()->create('doctors', function($table){
     $table->increments('id');
     $table->integer('role_id')->nullable(false);
+    $table->integer('user_id')->nullable(true);
     $table->string('name');
     $table->string('gender');
     $table->string('specialization');

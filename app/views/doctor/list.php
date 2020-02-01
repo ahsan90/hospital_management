@@ -10,6 +10,9 @@ if ($data != null){
     <table class="table table-hover">
         <thead>
         <tr>
+            <a href="<?=SROOT.'doctor/create'?>" class="btn btn-outline-primary"><i class='fa fa-plus'>Add a new doctor profile</a>
+        </tr>
+        <tr>
             <th>Name</th>
             <th>Specialization</th>
             <th>Gender</th>
@@ -31,8 +34,10 @@ if ($data != null){
             echo "<td>$doctor->email</td>";
             echo "<td>$doctor->address</td>";
             echo "<td>".Role::all()->where('id', $doctor->role_id)->first()->roleType."</td>";
-            echo "<td><a href='./edit/" . $doctor->id. "' title='Edit Record' class='btn btn-warning btn-xs btnMargin' data-toggle='tooltip'><i class='fa fa-edit'></i></a></td>";
-            echo "<td><a href='".SROOT."doctor/profile/" . $doctor->id. "' title='Go to Profile' class='btn btn-warning btn-xs btnMargin' data-toggle='tooltip'><i class='fa fa-user'></i></a></td>";
+            echo "<td><a href='./edit/" . $doctor->id. "' title='Edit Record' class='btn btn-warning btn-xs' data-toggle='tooltip'><i class='fa fa-edit'></i></a></td>";
+            echo "<td><a href='".SROOT."doctor/profile/" . $doctor->id. "' title='Go to Profile' class='btn btn-info btn-xs' data-toggle='tooltip'><i class='fa fa-user'></i></a></td>";
+            echo "<td><a href='".SROOT."doctor/delete/" . $doctor->id. "' title='Delete record' class='btn btn-danger btn-xs' data-toggle='tooltip'><i class='fa fa-trash'></i></a></td>";
+
 
             echo "</tr>";
         }

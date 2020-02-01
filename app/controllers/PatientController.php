@@ -28,18 +28,15 @@ class PatientController extends Controller
             $email = Input::get('email');
             $address = Input::get('address');
 
-            $data = [$role_id, $name, $healCardNumber, $dob, $gender, $phone, $email, $address, $username, $password];
+            //$data = [$role_id, $name, $healCardNumber, $dob, $gender, $phone, $email, $address, $username, $password];
 
             $user = User::all()->where('username', $username)->first();
 
-            $msg = "nothing happened";
-
             if ($user){
                 $_SESSION['msg'] = "<p class='alert-warning'>Username already exists</p>";
-                //$msg = http_build_query($_GET);
                 Router::redirect('patient/register');
-                //$this->view->render('patient/register', $msg);
             }
+
             if (Validation::isHealthCardExists($healCardNumber)){
                 $_SESSION['msg'] = "<p class='alert-warning'>Health Card number already exists</p>";
                 Router::redirect('patient/register');
@@ -67,12 +64,10 @@ class PatientController extends Controller
             }
 
         }else{
-            $msg = "Not poster";
+            $msg = "Not posted";
             //$this->view->render('patient/register');
             Router::redirect('patient/register');
         }
-
-        //$this->view->render('test', $msg);
     }
 
     public function profileAction($id){

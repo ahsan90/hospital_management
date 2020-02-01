@@ -42,6 +42,7 @@ class Validation
         }
     }
 
+    //Check if the user exists in the system
     public static function isUserExists($username){
         $user = User::all()->where('username', $username)->first();
         if ($user){

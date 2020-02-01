@@ -4,6 +4,7 @@
 $this->setSiteTitle('Doctor listing');
 
 $this->start('body');
+
 if ($data != null){
     ?>
 
@@ -20,10 +21,11 @@ if ($data != null){
         <tbody>
         <?php
         foreach ($data as $user) {
+
             echo "<tr>";
             echo "<td>$user->username</td>";
             //echo "<td>$user->role->id</td>";
-            echo "<td>".Role::all()->where('id', $user->id)->first()->roleType."</td>";
+            echo "<td>".Role::all()->where('id', $user->role_id)->first()->roleType."</td>";
             echo "<td>$user->created_at</td>";
             echo "<td>$user->updated_at</td>";
             echo "<td><a href='./edit/" . $user->id. "' title='Edit Record' class='btn btn-warning btn-xs btnMargin' data-toggle='tooltip'><i class='fa fa-edit'></i></a></td>";

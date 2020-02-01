@@ -3,7 +3,16 @@ $this->setSiteTitle('Doctor Profile');
 
 $this->start('body');
 ?>
-
+    <div class="mt-3">
+        <?php if (isset($_SESSION['msg']) || $msg != null)
+        {
+            echo $_SESSION['msg'];
+            unset($_SESSION['msg']);
+        }elseif ($msg != null){
+            echo $msg;
+        }
+        ?>
+    </div>
 <table class="table table-hover">
     <thead>
     <tr>
