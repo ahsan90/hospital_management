@@ -6,13 +6,22 @@ class Seeder
     //seed doctor data
     public static function doctorsDbSeed(){
         $faker = Faker\Factory::create();
-        $gender = $faker->randomElement(['male', 'female']);
+
         $role_id = Role::all()->where('id', 2)->first()->id;
 
-        $username = $faker->regexify('[A-Za-z0-9]{6}');
+
         $password = "123";
 
-        Doctor::saveValidDoctorInfo($role_id, $faker->name, $gender, $faker->sentence, $faker->phoneNumber, $faker->email, $faker->address, $username, $password);
+        $specialities = array("Family Physician", "Internal Medicine Physician", "Surgeon", "Psychiatrist", "Cardiologist",
+                        "Dermatologist", "Infectious Disease Physician", "Neurologist", "Radiologist", "Oncologist", "Nephrologist");
+
+        for ($i = 0; $i <= 10; $i++){
+            $gender = $faker->randomElement(['male', 'female']);
+            $username = $faker->regexify('[A-Za-z0-9]{6}');
+            Doctor::saveValidDoctorInfo($role_id, $faker->name, $gender, $specialities[$i], $faker->phoneNumber, $faker->email, $faker->address, $username, $password);
+        }
+
+
 
 //        $newDoctor = new Doctor();
 //        $newDoctor->name = $faker->name;
@@ -90,9 +99,9 @@ class Seeder
         self::scheduleSeedData();//create schedule
 
         //create doctors fake data
-        for ($i = 0; $i<=10; $i++){
+        //for ($i = 0; $i<=10; $i++){
             self::doctorsDbSeed();
-        }
+        //}
 
         //create nurse fake data
         for ($i=0; $i <= 20; $i++){
