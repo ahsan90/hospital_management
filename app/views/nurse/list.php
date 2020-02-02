@@ -7,6 +7,7 @@ $this->start('body');
 if ($data != null){
     ?>
 
+    <a href="<?=SROOT.'nurse/create'?>" class="btn btn-outline-primary"><i class='fa fa-plus'>Add a new nurse account</i></a>
     <table class="table table-hover">
         <thead>
         <tr>
@@ -34,7 +35,8 @@ if ($data != null){
             echo "<td>$nurse->updated_at</td>";
             echo "<td>".Role::all()->where('id', $nurse->role_id)->first()->roleType."</td>";
             echo "<td><a href='./edit/" . $nurse->id. "' title='Edit Record' class='btn btn-warning btn-xs btnMargin' data-toggle='tooltip'><i class='fa fa-edit'></i></a></td>";
-            echo "<td><a href='./profile/" . $nurse->id. "' title='Go to Profile' class='btn btn-warning btn-xs btnMargin' data-toggle='tooltip'><i class='fa fa-user'></i></a></td>";
+            echo "<td><a href='./profile/" . $nurse->id. "' title='Go to Profile' class='btn btn-info btn-xs btnMargin' data-toggle='tooltip'><i class='fa fa-user'></i></a></td>";
+            echo "<td><a href='./delete/" . $nurse->id. "' title='Go to Profile' class='btn btn-danger btn-xs btnMargin' data-toggle='tooltip'><i class='fa fa-trash'></i></a></td>";
             echo "</tr>";
         }
         ?>

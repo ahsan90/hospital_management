@@ -108,4 +108,19 @@ class PatientController extends Controller
         $_SESSION['msg'] = "<p class='alert alert-success'>Information saved successfully</p>";
         Router::redirect('patient/profile/'.$id);
     }
+
+    public function deleteAction($id){
+        $user_id = Patient::all()->find($id)->user_id;
+
+        //Delete both associated login account and doctor's account
+        $user = User::all()->find($user_id);
+        $nurse = Patient::all()->find($id);
+        $user->delete();
+        $nurse->delete();
+
+        $_SESSION['msg'] = "<p class='alert alert-danger'>Record deleted successfully</p>";
+
+        //session_destroy();
+        Router::redirect('');
+    }
 }

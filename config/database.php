@@ -6,12 +6,7 @@ use Illuminate\Database\Capsule\Manager;
 Manager::schema()->dropIfExists('users');
 Manager::schema()->create('users', function($table){
     $table->increments('id');
-    //$table->string('email')->nullable(true);
-    //$table->integer('user_id')->nullable(true);
     $table->integer('role_id')->nullable(false);
-    //$table->integer('patient_id')->nullable(true);
-    //$table->integer('doctor_id')->nullable(true);
-    //$table->integer('nurse_id')->nullable(true);
     $table->string('username')->nullable(false)->unique();
     $table->string('password')->nullable(false);
     $table->timestamps();
@@ -45,7 +40,7 @@ Manager::schema()->create('patients', function($table){
     $table->string('address');
     $table->timestamps();
 });
-//create patient_med_info table
+//create patient_records table
 Manager::schema()->dropIfExists('medical_records');
 Manager::schema()->create('medical_records', function($table){
     $table->increments('id');
@@ -65,7 +60,8 @@ Manager::schema()->create('medical_records', function($table){
 Manager::schema()->dropIfExists('nurses');
 Manager::schema()->create('nurses', function($table){
     $table->increments('id');
-    $table->integer('role_id');
+    $table->integer('role_id')->nullable(false);
+    $table->integer('user_id')->nullable(false);
     $table->string('name');
     $table->string('gender');
     $table->string('phone')->unique();

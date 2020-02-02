@@ -37,8 +37,9 @@ if ($data != null){
             echo "<td>$patient->created_at</td>";
             echo "<td>$patient->updated_at</td>";
             echo "<td>".Role::all()->where('id', $patient->role_id)->first()->roleType."</td>";
-            echo "<td><a href='./edit/" . $patient->id. "' title='Edit Record' class='btn btn-warning btn-xs btnMargin' data-toggle='tooltip'><i class='fa fa-edit'></i></a></td>";
-            echo "<td><a href='./profile/" . $patient->id. "' title='Go to Profile' class='btn btn-warning btn-xs btnMargin' data-toggle='tooltip'><i class='fa fa-user'></i></a></td>";
+            echo "<td><a href='".SROOT."patient/edit/" . $patient->id. "' title='Edit Record' class='btn btn-warning btn-xs' data-toggle='tooltip'><i class='fa fa-edit'></i></a></td>";
+            echo "<td><a href='".SROOT."patient/profile/" . $patient->id. "' title='Go to Profile' class='btn btn-info btn-xs' data-toggle='tooltip'><i class='fa fa-user'></i></a></td>";
+            echo "<td><a href='".SROOT."patient/delete/" . $patient->id. "' title='Delete record' class='btn btn-danger btn-xs' data-toggle='tooltip'><i class='fa fa-trash'></i></a></td>";
             echo "</tr>";
         }
         ?>

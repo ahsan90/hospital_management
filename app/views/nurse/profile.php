@@ -4,9 +4,20 @@ $this->setSiteTitle('Nurse Profile');
 $this->start('body');
 ?>
 
+    <div class="mt-3">
+        <?php if (isset($_SESSION['msg']) || $msg != null)
+        {
+            echo $_SESSION['msg'];
+            unset($_SESSION['msg']);
+        }elseif ($msg != null){
+            echo $msg;
+        }
+        ?>
+    </div>
 <table class="table table-hover">
     <thead>
     <tr>
+        <th>Username</th>
         <th>Name</th>
         <th>Gender</th>
         <th>Phone</th>
@@ -21,7 +32,14 @@ $this->start('body');
     <tbody>
     <?php
         $nurse = $data;
+
+        $user_id = Nurse::all()->find($nurse->id)->user_id;
+
+        //Delete both associated login account and doctor's account
+        $user = User::all()->find($user_id);
+
         echo "<tr>";
+        echo "<td>$user->username</td>";
         echo "<td>$nurse->name</td>";
         echo "<td>$nurse->gender</td>";
         echo "<td>$nurse->phone</td>";
@@ -30,7 +48,9 @@ $this->start('body');
         echo "<td>$nurse->created_at</td>";
         echo "<td>$nurse->updated_at</td>";
         echo "<td>".Role::all()->where('id', $nurse->role_id)->first()->roleType."</td>";
-        echo "<td><a href='".SROOT."nurse/edit/" . $nurse->id. "' title='Edit Record' class='btn btn-warning btn-xs btnMargin' data-toggle='tooltip'><i class='fa fa-edit'></i></a></td>";
+        echo "<td><a href='".SROOT."nurse/edit/" . $nurse->id. "' title='Edit Record' class='btn btn-warning btn-xs' data-toggle='tooltip'><i class='fa fa-edit'></i></a></td>";
+        echo "<td><a href='".SROOT."nurse/profile/" . $nurse->id. "' title='Go to Profile' class='btn btn-info btn-xs' data-toggle='tooltip'><i class='fa fa-user'></i></a></td>";
+        echo "<td><a href='".SROOT."nurse/delete/" . $nurse->id. "' title='Delete record' class='btn btn-danger btn-xs' data-toggle='tooltip'><i class='fa fa-trash'></i></a></td>";
         echo "</tr>";
 
     ?>

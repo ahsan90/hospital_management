@@ -84,7 +84,7 @@ class DoctorController extends Controller
         //Check validation
         if (!Validation::isEmpty($role_id) && !Validation::isEmpty($name)
             && !Validation::isEmpty($specialization)
-            && !Validation::isEmpty($username) && !Validation::isEmpty($password) && !Validation::isEmpty($gender)
+            && !Validation::isEmpty($username) && !Validation::isEmpty($gender)
             && !Validation::isEmpty($phone) && Validation::isValidEmail($email)
             && !Validation::isEmpty($address)){
 
@@ -95,7 +95,9 @@ class DoctorController extends Controller
             $user = User::all()->find($user_id);
 
             $user->username = $username;
-            $user->password = md5($password);
+            if (!Validation::isEmpty($password)){
+                $user->password = md5($password);
+            }
             $user->role_id = $role_id;
             //update users
             $user->update();
