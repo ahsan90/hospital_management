@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
         <script src="<?=SROOT?>public/js/jquery_3.4.js"></script>
         <script src="<?=SROOT?>public/js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
         <?= $this->content('head'); ?>
     </head>
@@ -33,6 +34,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?=SROOT?>patient/register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?=SROOT?>appointment/search">Book an appointment</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?=SROOT?>admin/index">Admin</a>

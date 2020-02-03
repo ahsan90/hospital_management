@@ -52,8 +52,7 @@ Manager::schema()->create('medical_records', function($table){
     $table->text('nurseNotes');
     $table->text('diagnose');
     $table->integer('patient_id');
-    $table->integer('doctor_id');
-    $table->integer('nurse_id');
+    //$table->integer('doctor_id');
     $table->timestamps();
 });
 //create nurses table
@@ -76,8 +75,8 @@ Manager::schema()->create('appointments', function($table){
     $table->string('time');
     $table->string('date');
     $table->integer('doctor_id')->nullable(false);
-    $table->integer('patient_id')->nullable(false);
-    $table->integer('nurse_id')->nullable(false);
+    $table->integer('patient_id')->nullable(true);
+    //$table->integer('nurse_id')->nullable(false);
     $table->integer('schedule_id')->nullable(false);
     $table->timestamps();
 });
