@@ -30,7 +30,7 @@ echo $datePicked;
 
         <div class="form-group">
             <input type="hidden" name="datePicked" value="<?=$datePicked?>">
-            <label for="gender">Select from available time slot</label>
+            <label for="Doctor">Select from available doctors</label>
 
 
             <select class="form-control" name="doctorId">
@@ -47,11 +47,12 @@ echo $datePicked;
             </select>
         </div>
         <div class="form-group">
+            <label for="gender">Select from available time slot</label>
             <select class="form-control" name="slot">
                 <?php
                 if ($slots != ""){
                     foreach ($slots as $slot){
-                        echo "<option value='".$slot->time."' >".$slot->time."</option>";
+                        echo "<option value='".$slot->id."' >".$slot->time."</option>";
                     }
                 }else{
                     echo "<option value='0' >No data available</option>";

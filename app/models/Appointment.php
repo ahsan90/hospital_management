@@ -23,18 +23,18 @@ class Appointment extends Model{
         }
     }
 
-    public function saveAppointment($schedule, $doctor_id, $date){
+    public function saveAppointment($schedule_id, $doctor_id, $date){
         $appointment = new Appointment();
-        $appointment->time = $schedule;
+        $appointment->schedule_id = $schedule_id;
         $appointment->doctor_id = $doctor_id;
         $appointment->date = $date;
         $appointment->save();
 
         //Find out the newly created id of the appointment
-        $appointment_id = Appointment::all()->where('time' == $schedule && 'date' == $date);
+        //$appointment_id = Appointment::all()->where('time' == $schedule && 'date' == $date);
 
         $appointmentHistory = new AppointmentHistory();
-        $appointmentHistory->appointment_id = $appointment_id;
+        //$appointmentHistory->appointment_id = $appointment_id;
         //$appointmentHistory->save();
 
     }

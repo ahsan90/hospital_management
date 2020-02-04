@@ -72,7 +72,6 @@ Manager::schema()->create('nurses', function($table){
 Manager::schema()->dropIfExists('appointments');
 Manager::schema()->create('appointments', function($table){
     $table->increments('id');
-    $table->string('time');
     $table->string('date');
     $table->integer('doctor_id')->nullable(false);
     $table->integer('patient_id')->nullable(true);
@@ -88,6 +87,19 @@ Manager::schema()->create('appointment_history', function ($table){
     $table->integer('appointment_id')->nullable(false);
     $table->integer('patient_id')->nullable(false);
     $table->string('lastVisitDate');
+    $table->timestamps();
+});
+
+//create appointments_schedules table
+Manager::schema()->dropIfExists('time_slots');
+Manager::schema()->create('time_slots', function ($table){
+    $table->increments('id');
+    $table->integer('appointment_id')->nullable(false);
+    $table->string('time')->nullable(false);
+    $table->integer('date')->nullable(false);
+    $table->integer('doctor_id')->nullable(true);
+    $table->integer('patient_id')->nullable(true);
+    //$table->string('lastVisitDate');
     $table->timestamps();
 });
 
