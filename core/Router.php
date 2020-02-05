@@ -16,9 +16,32 @@ class Router {
         //params
         $queryParams = $url;
 
+        //dnd(LoginHelper::isLoggedIn());
+//        if (AuthorizationHelper::isLoginRequired($controller) && !LoginHelper::isLoggedIn()){
+//            $controller = 'AuthController';
+//            $action = 'loginAction';
+//            dnd($controller);
+//        }
+        if (AuthorizationHelper::isLoginRequired($controller) && !LoginHelper::isLoggedIn()){
+            //Router::redirect('auth/login');
+            session_destroy();
+            header('Location: '.SROOT.'auth/login');
+        }
+
+
         $dispatch = new $controller($controller_name, $action);
 
+        //dnd($controller.'---'.$controller_name.'----'.$action);
+
+
+
+        //dnd($dispatch);
+
         if (method_exists($controller, $action)){
+            //dnd($controller.$action);
+
+
+
             call_user_func_array([$dispatch, $action], $queryParams);
         }
         else{

@@ -108,8 +108,8 @@ class LoginHelper
     //get currently loggedIn user
     public static function getCurrentUser(){
         if (self::isLoggedIn()){
-
-
+            $currentUser = User::all()->where('username', $_SESSION['username']);
+            return $currentUser;
         }
     }
 
@@ -128,20 +128,36 @@ class LoginHelper
     }
 
     //check if the user is a doctor
-    public static function isDoctor(){
+    public static function isACurrentDoctor(){
+        $flag = false;
         if (self::isLoggedIn()){
-            //$doctor = Doctor::all()->where('user_id', $_SESSION['user_id'])->first();
+            $role_id = Doctor::all()->where('user_id', $_SESSION['user_id'])->first()->role_id;
+            $roleType = Role::all()->where("id", $role_id)->first()->roleType;
+            if($roleType == "doctor") $flag = true;
         }
+        return $flag;
     }
 
     //check if the user is a nurse
-    public static function isNurse(){
-
+    public static function isACurrentNurse(){
+        $flag = false;
+        if (self::isLoggedIn()){
+            $role_id = Nurse::all()->where('user_id', $_SESSION['user_id'])->first()->role_id;
+            $roleType = Role::all()->where("id", $role_id)->first()->roleType;
+            if($roleType == "nurse") $flag = true;
+        }
+        return $flag;
     }
 
     //check if the user is patient
-    public static function isPatient(){
-
+    public static function isACurrentPatient(){
+        $flag = false;
+        if (self::isLoggedIn()){
+            $role_id = Patient::all()->where('user_id', $_SESSION['user_id'])->first()->role_id;
+            $roleType = Role::all()->where("id", $role_id)->first()->roleType;
+            if($roleType == "patient") $flag = true;
+        }
+        return $flag;
     }
 
     //check if there is no user logged in
