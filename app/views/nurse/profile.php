@@ -14,24 +14,25 @@ $this->start('body');
         }
         ?>
     </div>
-<table class="table table-hover">
-    <thead>
-    <tr>
-        <th>Username</th>
-        <th>Name</th>
-        <th>Gender</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Address</th>
-        <th>Created at</th>
-        <th>Last updated</th>
-        <th>Role Type</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php
-        $nurse = $data;
+<?php $nurse = $data;
+if ($nurse != null) { ?>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Created at</th>
+            <th>Last updated</th>
+            <th>Role Type</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
 
         $user_id = Nurse::all()->find($nurse->id)->user_id;
 
@@ -47,16 +48,20 @@ $this->start('body');
         echo "<td>$nurse->address</td>";
         echo "<td>$nurse->created_at</td>";
         echo "<td>$nurse->updated_at</td>";
-        echo "<td>".Role::all()->where('id', $nurse->role_id)->first()->roleType."</td>";
-        echo "<td><a href='".SROOT."nurse/edit/" . $nurse->id. "' title='Edit Record' class='btn btn-warning btn-xs' data-toggle='tooltip'><i class='fa fa-edit'></i></a></td>";
-        echo "<td><a href='".SROOT."nurse/profile/" . $nurse->id. "' title='Go to Profile' class='btn btn-info btn-xs' data-toggle='tooltip'><i class='fa fa-user'></i></a></td>";
-        echo "<td><a href='".SROOT."nurse/delete/" . $nurse->id. "' title='Delete record' class='btn btn-danger btn-xs' data-toggle='tooltip'><i class='fa fa-trash'></i></a></td>";
+        echo "<td>" . Role::all()->where('id', $nurse->role_id)->first()->roleType . "</td>";
+        echo "<td><a href='" . SROOT . "nurse/edit/" . $nurse->id . "' title='Edit Record' class='btn btn-warning btn-xs' data-toggle='tooltip'><i class='fa fa-edit'></i></a></td>";
+        echo "<td><a href='" . SROOT . "nurse/profile/" . $nurse->id . "' title='Go to Profile' class='btn btn-info btn-xs' data-toggle='tooltip'><i class='fa fa-user'></i></a></td>";
+        echo "<td><a href='" . SROOT . "nurse/delete/" . $nurse->id . "' title='Delete record' class='btn btn-danger btn-xs' data-toggle='tooltip'><i class='fa fa-trash'></i></a></td>";
         echo "</tr>";
 
-    ?>
+        ?>
 
-    </tbody>
-</table>
-<?php
+        </tbody>
+    </table>
+    <?php
+} else {
+    echo "<div><p class='alert alert-info'>No data available</p></div>";
+}
+
 $this->end();
 ?>

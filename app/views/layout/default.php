@@ -47,10 +47,12 @@
                             <a class="nav-link" href="<?=SROOT?>auth/login">Login</a>
                         </li>
                         <?php } ?>
+
+                        <?php if (LoginHelper::isAdmin()) {?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?=SROOT?>admin/index">Admin</a>
                         </li>
-
+                        <?php } ?>
 
                     </ul>
                 </div>

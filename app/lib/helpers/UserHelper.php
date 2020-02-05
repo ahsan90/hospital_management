@@ -7,4 +7,6 @@ class UserHelper
         $user_id = User::all()->where('username', $username)->first()->id;
         return $user_id;
     }
+
+
 }

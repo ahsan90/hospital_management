@@ -22,6 +22,9 @@ class LoginHelper
         if (!isset($_SESSION['role_type'])){
             $_SESSION['role_type'] = null;
         }
+        if (!isset($_SESSION['user_id'])){
+            $_SESSION['user_id'] = null;
+        }
     }
 
     /**
@@ -76,6 +79,7 @@ class LoginHelper
             if ($user->username == $username && $user->password == md5($password)){
                 $_SESSION['username'] = $username;
                 $_SESSION['password'] = $password;
+                $_SESSION['user_id'] = $user->id;
                 $_SESSION['role_type'] = Role::all()->where('id', $user->role_id)->first()->roleType;
                 $flag = true;
                 break;
@@ -88,18 +92,46 @@ class LoginHelper
         session_destroy();
     }
 
-    public static function currentUser(){
+    public static function currentUser($id){
+        $flag = false;
+        $user = User::all()->find($id);
+        if (self::isLoggedIn()){
+            if ($user){
+                if($user->username == $_SESSION['username']){
+                    $flag = true;
+                }
+            }
+        }
+        return $flag;
+    }
 
+    //get currently loggedIn user
+    public static function getCurrentUser(){
+        if (self::isLoggedIn()){
+
+
+        }
     }
 
     //check if the user is admin
     public static function isAdmin(){
-
+        if (self::isLoggedIn()){
+            if ($_SESSION['role_type'] == "admin"){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
     }
 
     //check if the user is a doctor
     public static function isDoctor(){
-
+        if (self::isLoggedIn()){
+            //$doctor = Doctor::all()->where('user_id', $_SESSION['user_id'])->first();
+        }
     }
 
     //check if the user is a nurse

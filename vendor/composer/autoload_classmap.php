@@ -10,6 +10,7 @@ return array(
     'Appointment' => $baseDir . '/app/models/Appointment.php',
     'AppointmentHistory' => $baseDir . '/app/models/AppointmentHistory.php',
     'Appointment_Schedule' => $baseDir . '/app/models/Appointment_Schedule.php',
+    'AuthorizationHelper' => $baseDir . '/app/lib/helpers/AuthorizationHelper.php',
     'Controller' => $baseDir . '/core/Controller.php',
     'Doctor' => $baseDir . '/app/models/Doctor.php',
     'Input' => $baseDir . '/core/Input.php',

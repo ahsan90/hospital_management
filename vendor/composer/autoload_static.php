@@ -131,6 +131,7 @@ class ComposerStaticInitc089f4cec793ae2e54eff10969f5a656
         'Appointment' => __DIR__ . '/../..' . '/app/models/Appointment.php',
         'AppointmentHistory' => __DIR__ . '/../..' . '/app/models/AppointmentHistory.php',
         'Appointment_Schedule' => __DIR__ . '/../..' . '/app/models/Appointment_Schedule.php',
+        'AuthorizationHelper' => __DIR__ . '/../..' . '/app/lib/helpers/AuthorizationHelper.php',
         'Controller' => __DIR__ . '/../..' . '/core/Controller.php',
         'Doctor' => __DIR__ . '/../..' . '/app/models/Doctor.php',
         'Input' => __DIR__ . '/../..' . '/core/Input.php',
