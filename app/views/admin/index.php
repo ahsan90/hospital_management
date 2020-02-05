@@ -2,7 +2,7 @@
 <?php $this->start('body'); ?>
 
 <div id="admin">
-    <h2>Welcome to admin Panel</h2>
+    <h2>Welcome to Admin Panel</h2>
 
     <div class="content mt-3">
         <a href="<?=SROOT?>admin/userList" class="btn btn-outline-primary btn-block"><i class="fa fa-cog fa-spin fa-fw"></i>&nbsp;Manage users</a><br>

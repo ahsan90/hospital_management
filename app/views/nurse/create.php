@@ -53,7 +53,8 @@ $roles = Role::all();
                 <label for="gender">Gender</label>
                 <select class="form-control" name="gender">
                     <option value="Male" selected="Male">Male</option>
-                    <option value="Male">Female</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
                 </select>
             </div>
             <div class="form-group">

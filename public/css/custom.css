@@ -18,3 +18,8 @@
     font-family: Arial, serif;
     font-weight: bold;
 }
+.login-form{
+    max-width: 20%;
+    margin: 0 auto;
+
+}

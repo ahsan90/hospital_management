@@ -13,6 +13,7 @@ return array(
     'Controller' => $baseDir . '/core/Controller.php',
     'Doctor' => $baseDir . '/app/models/Doctor.php',
     'Input' => $baseDir . '/core/Input.php',
+    'LoginHelper' => $baseDir . '/app/lib/helpers/LoginHelper.php',
     'Nurse' => $baseDir . '/app/models/Nurse.php',
     'Patient' => $baseDir . '/app/models/Patient.php',
     'Role' => $baseDir . '/app/models/Role.php',

@@ -38,6 +38,15 @@
                         <li class="nav-item">
                             <a class="nav-link" href="<?=SROOT?>appointment/search">Book an appointment</a>
                         </li>
+                        <?php if (LoginHelper::isLoggedIn()){?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?=SROOT?>auth/logout">Logout</a>
+                        </li>
+                        <?php } elseif(!LoginHelper::isLoggedIn()) {?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?=SROOT?>auth/login">Login</a>
+                        </li>
+                        <?php } ?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?=SROOT?>admin/index">Admin</a>
                         </li>

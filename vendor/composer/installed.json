@@ -246,8 +246,8 @@
     },
     {
         "name": "illuminate/container",
-        "version": "v6.13.1",
-        "version_normalized": "6.13.1.0",
+        "version": "v6.14.0",
+        "version_normalized": "6.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/container.git",
@@ -292,8 +292,8 @@
     },
     {
         "name": "illuminate/contracts",
-        "version": "v6.13.1",
-        "version_normalized": "6.13.1.0",
+        "version": "v6.14.0",
+        "version_normalized": "6.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/contracts.git",
@@ -338,17 +338,17 @@
     },
     {
         "name": "illuminate/database",
-        "version": "v6.13.1",
-        "version_normalized": "6.13.1.0",
+        "version": "v6.14.0",
+        "version_normalized": "6.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/database.git",
-            "reference": "a5e0f20e4070a2ea3719a86bf2df2a413f8fbfe1"
+            "reference": "1f9bb9c0c0caffdecb951708e75f47b03b81fc97"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/database/zipball/a5e0f20e4070a2ea3719a86bf2df2a413f8fbfe1",
-            "reference": "a5e0f20e4070a2ea3719a86bf2df2a413f8fbfe1",
+            "url": "https://api.github.com/repos/illuminate/database/zipball/1f9bb9c0c0caffdecb951708e75f47b03b81fc97",
+            "reference": "1f9bb9c0c0caffdecb951708e75f47b03b81fc97",
             "shasum": ""
         },
         "require": {
@@ -366,7 +366,7 @@
             "illuminate/filesystem": "Required to use the migrations (^6.0).",
             "illuminate/pagination": "Required to paginate the result set (^6.0)."
         },
-        "time": "2020-01-28T16:17:59+00:00",
+        "time": "2020-02-04T14:04:17+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -400,17 +400,17 @@
     },
     {
         "name": "illuminate/events",
-        "version": "v6.13.1",
-        "version_normalized": "6.13.1.0",
+        "version": "v6.14.0",
+        "version_normalized": "6.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/events.git",
-            "reference": "3824f9de770b370d120ca333aeffb521466c6dab"
+            "reference": "977a641a8a09ef7fec6e9a69d590149532232405"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/events/zipball/3824f9de770b370d120ca333aeffb521466c6dab",
-            "reference": "3824f9de770b370d120ca333aeffb521466c6dab",
+            "url": "https://api.github.com/repos/illuminate/events/zipball/977a641a8a09ef7fec6e9a69d590149532232405",
+            "reference": "977a641a8a09ef7fec6e9a69d590149532232405",
             "shasum": ""
         },
         "require": {
@@ -419,7 +419,7 @@
             "illuminate/support": "^6.0",
             "php": "^7.2"
         },
-        "time": "2020-01-07T13:47:03+00:00",
+        "time": "2020-02-03T14:27:32+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -447,17 +447,17 @@
     },
     {
         "name": "illuminate/support",
-        "version": "v6.13.1",
-        "version_normalized": "6.13.1.0",
+        "version": "v6.14.0",
+        "version_normalized": "6.14.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/support.git",
-            "reference": "c6bcd329fd8c7c46908f1af7f99dae164a4065a1"
+            "reference": "78b85d2ae298a46edfc57baa5eddd2594b9d313a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/support/zipball/c6bcd329fd8c7c46908f1af7f99dae164a4065a1",
-            "reference": "c6bcd329fd8c7c46908f1af7f99dae164a4065a1",
+            "url": "https://api.github.com/repos/illuminate/support/zipball/78b85d2ae298a46edfc57baa5eddd2594b9d313a",
+            "reference": "78b85d2ae298a46edfc57baa5eddd2594b9d313a",
             "shasum": ""
         },
         "require": {
@@ -479,7 +479,7 @@
             "symfony/var-dumper": "Required to use the dd function (^4.3.4).",
             "vlucas/phpdotenv": "Required to use the Env class and env helper (^3.3)."
         },
-        "time": "2020-01-28T14:36:33+00:00",
+        "time": "2020-02-03T14:22:17+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {

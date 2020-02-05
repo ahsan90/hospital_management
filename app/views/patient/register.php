@@ -18,7 +18,7 @@ $newPatient = $data;
         }
         ?>
     </div>
-    <form action="<?=SROOT?>patient/registerpost" method="post">
+    <form action="<?=SROOT?>patient/registerpost" method="post" class="">
         <fieldset  class="scheduler-border">
             <legend  class="scheduler-border">New Patient Registration</legend>
 
@@ -49,7 +49,8 @@ $newPatient = $data;
 
                 <select class="form-control" name="gender">
                     <option value="Male" selected="Male">Male</option>
-                    <option value="Male">Female</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
                 </select>
             </div>
             <div class="form-group">

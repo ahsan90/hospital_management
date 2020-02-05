@@ -27,9 +27,14 @@ class Router {
         //dnd($url);
     }
 
-    public static function redirect($location, $msg=null){
+    public static function redirect($location, $msg=""){
         if (!headers_sent()){
-            header('Location:'.SROOT.$location);
+            if ($msg!=""){
+                header('Location:'.SROOT.$location."?msg=".$msg);
+            }else{
+                header('Location:'.SROOT.$location);
+            }
+            //header('Location:'.SROOT.$location);
             exit;
         }else{
             echo '<script type="text/javascript">';

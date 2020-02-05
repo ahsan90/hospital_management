@@ -69,7 +69,7 @@ class Seeder
     //create an Admin user for test
     public static function createAdminUser(){
         $username = 'cisAdmin';
-        $password = 'cispassword';
+        $password = 'cispass';
         $role_id = Role::all()->where('roleType', 'admin')->first()->id;
 
         $user = new User();
@@ -100,17 +100,17 @@ class Seeder
 
         //create doctors fake data
         //for ($i = 0; $i<=10; $i++){
-            self::doctorsDbSeed();
+            //self::doctorsDbSeed();
         //}
 
         //create nurse fake data
-        for ($i=0; $i <= 20; $i++){
-            self::nurseDbSeed();
-        }
-
-        //create patient fake data
-        for ($i = 0; $i<=100; $i++){
-            self::patientDbSeed();
-        }
+//        for ($i=0; $i <= 20; $i++){
+//            self::nurseDbSeed();
+//        }
+//
+//        //create patient fake data
+//        for ($i = 0; $i<=100; $i++){
+//            self::patientDbSeed();
+//        }
     }
 }

@@ -134,6 +134,7 @@ class ComposerStaticInitc089f4cec793ae2e54eff10969f5a656
         'Controller' => __DIR__ . '/../..' . '/core/Controller.php',
         'Doctor' => __DIR__ . '/../..' . '/app/models/Doctor.php',
         'Input' => __DIR__ . '/../..' . '/core/Input.php',
+        'LoginHelper' => __DIR__ . '/../..' . '/app/lib/helpers/LoginHelper.php',
         'Nurse' => __DIR__ . '/../..' . '/app/models/Nurse.php',
         'Patient' => __DIR__ . '/../..' . '/app/models/Patient.php',
         'Role' => __DIR__ . '/../..' . '/app/models/Role.php',
