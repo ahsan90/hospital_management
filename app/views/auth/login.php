@@ -3,24 +3,27 @@ $this->setSiteTitle('Doctor Profile');
 
 $this->start('body');
 
-    if (isset($_SESSION['msg']) || $msg != "" || isset($_REQUEST['msg'])){
-        if (isset($_SESSION['msg']))
-        {
-            echo $_SESSION['msg'];
-            unset($_SESSION['msg']);
-        }elseif ($msg != null){
-            echo "<div>".$msg."</div>";
-        }
-        elseif (isset($_REQUEST['msg'])){
-            echo $_REQUEST['msg'];
-            unset($_REQUEST['msg']);
-        }
-    }
+
 
 
 ?>
 
     <div class="login-form mt-2 mb-5">
+    <?php
+        if (isset($_SESSION['msg']) || $msg != "" || isset($_REQUEST['msg'])){
+            if (isset($_SESSION['msg']))
+            {
+                echo $_SESSION['msg'];
+                unset($_SESSION['msg']);
+            }elseif ($msg != null){
+                echo "<div>".$msg."</div>";
+            }
+            elseif (isset($_REQUEST['msg'])){
+                echo $_REQUEST['msg'];
+                unset($_REQUEST['msg']);
+            }
+        }
+    ?>
         <form method="post" action="<?=SROOT?>auth/loginpost">
             <fieldset class="scheduler-border">
                 <legend class="scheduler-border">Login</legend>

@@ -30,6 +30,9 @@
                             <a class="nav-link" href="<?=SROOT?>">Home</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="<?=SROOT?>home/about">About</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="<?=SROOT?>doctor/listing">Doctor List</a>
                         </li>
                         <li class="nav-item">
@@ -52,6 +55,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="<?=SROOT?>admin/index">Admin</a>
                         </li>
+
                         <?php } ?>
 
                     </ul>

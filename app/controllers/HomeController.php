@@ -12,4 +12,8 @@ class HomeController extends Controller
         //die('Welcome from home controller of index action');
         $this->view->render('home/index');
     }
+    public function aboutAction(){
+        //die('Welcome from home controller of index action');
+        $this->view->render('home/about');
+    }
 }

@@ -1,0 +1,90 @@
+<?php $this->start('body'); ?>
+
+<div class="mt-3">
+    <?php if (isset($_SESSION['msg']) || $msg != "" || isset($_REQUEST['msg'])){
+        if (isset($_SESSION['msg']))
+        {
+            echo $_SESSION['msg'];
+            unset($_SESSION['msg']);
+        }elseif ($msg != null){
+            echo "<div>".$msg."</div>";
+        }
+        elseif (isset($_REQUEST['msg'])){
+            echo $_REQUEST['msg'];
+            unset($_REQUEST['msg']);
+        }
+    }
+    ?>
+</div>
+
+<h1 class="text-center red">Welcome to DOUH Health care system...</h1>
+<div class="about">
+    <h2>Admin Login Credentials</h2>
+    <table class="table table-hover table-danger table-bordered">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>cisAdmin</td>
+                <td>cispass</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 class="mt-2">Default Doctor Login Credentials</h2>
+    <table class="table table-primary table-bordered">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Will add it later</td>
+            <td>will add it later</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>Default Nurse Login Credentials</h2>
+    <table class="table table-dark table-bordered">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Will add it later</td>
+            <td>will add it later</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>Default Patient Login Credentials</h2>
+    <table class="table table-info table-bordered">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Will add it later</td>
+            <td>will add it later</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+<?php $this->end(); ?>
+
+
+
