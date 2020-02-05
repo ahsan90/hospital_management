@@ -18,12 +18,18 @@
     font-family: Arial, serif;
     font-weight: bold;
 }
+
+/*login form*/
 .login-form{
-    max-width: 20%;
+    max-width: 25%;
     margin: 0 auto;
+    text-align: center;
 }
+
 /*About page*/
 .about{
-    max-width: 60%;
-    margin: 0 auto;
+    text-align: center;
+}
+.mx-auto{
+    min-width: 80%; !important;
 }
