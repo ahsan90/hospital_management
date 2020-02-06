@@ -2,8 +2,10 @@
 $this->setSiteTitle('Book an appointment');
 
 $this->start('body');
-$doctors = $_SESSION['doctors'];
-unset($_SESSION['doctors']);
+$specializations = $_SESSION['doctors_specialization'];
+//dnd($_SESSION['doctors_specialization']);
+//dnd($specializations);
+unset($_SESSION['doctors_specialization']);
 ?>
 
 <form action="<?=SROOT?>appointment/booking" method="post" class="mt-5">
@@ -15,9 +17,9 @@ unset($_SESSION['doctors']);
 
             <select name="specialization">
                 <?php
-                if ($doctors != ""){
-                    foreach ($doctors as $doctor){
-                        echo "<option value='".$doctor->specialization."' >".$doctor->specialization."</option>";
+                if ($specializations != "" || $specializations |= null){
+                    foreach ($specializations as $specialization){
+                        echo "<option value='".$specialization."' >".$specialization."</option>";
                     }
                 }else{
                     echo "<option value='0' >No data available</option>";

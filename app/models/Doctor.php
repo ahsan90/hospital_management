@@ -29,6 +29,13 @@ class Doctor extends Model{
         if(Validation::isUserExists($username)){
             return $flag;
         }
+        if (Validation::isDoctorEmailExists($email)){
+            return false;
+        }
+        if (Validation::isDoctorPhoneExists($phone)){
+            return false;
+        }
+
         if (!Validation::isEmpty($role_id) && !Validation::isEmpty($name)
             && !Validation::isEmpty($gender)
             && !Validation::isEmpty($specialization) && !Validation::isEmpty($gender)

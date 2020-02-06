@@ -12,18 +12,18 @@ class AppointmentController extends Controller
 
     //Search doctor and available schedule for fixing an appointment date
     public function searchAction(){
-        $selectedDoctorSpecialist = array();
+        $selectedDoctorSpecializations = array();
         $doctors = Doctor::all();
 
-        foreach ($selectedDoctorSpecialist as $current){
-            //$doctors =
+        foreach ($doctors as $current){
+            if (!in_array($current->specialization, $selectedDoctorSpecializations)){
+                $selectedDoctorSpecializations[] = $current->specialization;
+            }
         }
 
-        if ($doctors){
-            $_SESSION['doctors'] = $doctors;
-        }else{
-            $_SESSION['doctors'] = "";
-        }
+        //dnd($selectedDoctorSpecializations);
+        $_SESSION['doctors_specialization'] = $selectedDoctorSpecializations;
+        //dnd($_SESSION['doctors_specialization']);
 
         $this->view->render('appointment/search');
     }
@@ -33,38 +33,44 @@ class AppointmentController extends Controller
             $specialization = Input::get('specialization');
             $datePicked = Input::get('date');
             $doctorsOnSpecialization = Doctor::all()->where('specialization', $specialization);
-            if ($doctorsOnSpecialization){
-                $_SESSION['doctors'] = $doctorsOnSpecialization;
-            }else{
-                $_SESSION['doctors'] = "";
-            }
 
-            $doctor_id = Input::get('doctor_id');
+
+
+            $_SESSION['doctors'] = $doctorsOnSpecialization;
+            //dnd($selectedDoctorsId);
+
+
+
+            //$doctor_id = Input::get('1');
+//            foreach ($_SESSION['doctors'] as $doctor){
+//
+//            }
+            //dnd($_SESSION['doctors']);
 
             $_SESSION['datePicked'] = $datePicked;
-
-
-            $selectedSchedules = array();
-
-            $schedule = Appointment::all()->where('date', $datePicked)->first();
-
-            if ($schedule){
-
-                foreach (Schedule::all() as $current){
-
-                    if ($current->id != $schedule->schedule_id && $schedule->doctor_id != $doctor_id){
-                        array_push($selectedSchedules, $current);
-                    }elseif ($current->id == $schedule->schedule_id && $schedule->doctor_id != $doctor_id){
-                        if ($this->checkScheduleIsDifferent($current->time, $current->id))
-                        array_push($selectedSchedules, $current);
-                    }
-                }
-                $_SESSION['slots'] = $selectedSchedules;
-            }
-            else{
-                $_SESSION['slots'] = Schedule::all();
-                //dnd('not found');
-            }
+//
+//
+//            $selectedSchedules = array();
+//
+//            $schedule = Appointment::all()->where('date', $datePicked)->first();
+//
+//            if ($schedule){
+//
+//                foreach (Schedule::all() as $current){
+//
+//                    if ($current->id != $schedule->schedule_id && $schedule->doctor_id != $doctor_id){
+//                        array_push($selectedSchedules, $current);
+//                    }elseif ($current->id == $schedule->schedule_id && $schedule->doctor_id != $doctor_id){
+//                        if ($this->checkScheduleIsDifferent($current->time, $current->id))
+//                        array_push($selectedSchedules, $current);
+//                    }
+//                }
+//                $_SESSION['slots'] = $selectedSchedules;
+//            }
+//            else{
+//                $_SESSION['slots'] = Schedule::all();
+//                //dnd('not found');
+//            }
 
         }
 

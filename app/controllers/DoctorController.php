@@ -36,6 +36,18 @@ class DoctorController extends Controller
                 $_SESSION['msg'] = "<p class='alert-warning'>Username already exists</p>";
                 Router::redirect('doctor/create');
             }
+
+            if (Validation::isDoctorEmailExists($email)){
+                $_SESSION['msg'] = "<p class='alert-warning'>Email already exists</p>";
+                Router::redirect('doctor/create');
+            }
+            if (Validation::isDoctorPhoneExists($phone)){
+                $_SESSION['msg'] = "<p class='alert-warning'>Phone number already exists</p>";
+                Router::redirect('doctor/create');
+            }
+
+            //dnd(Validation::iValidDoctorPhoneEntry($phone));
+
             if (Doctor::isValidDoctorData($role_id, $name, $gender,$specialization,$phone,$email, $address, $username, $password)){
                 $_SESSION['msg'] = "<p class='alert alert-success'>New Doctor's Account Added</p>";
 
@@ -99,6 +111,9 @@ class DoctorController extends Controller
                 $user->password = md5($password);
             }
             $user->role_id = $role_id;
+
+            //Fix the bug in here
+            //dnd($user->username);
             //update users
             $user->update();
 

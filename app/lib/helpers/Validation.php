@@ -78,6 +78,37 @@ class Validation
             echo $msg;
         }
     }
+
+    //Check if doctor's phone number exists
+    public static function isDoctorPhoneExists($phone){
+        $flag = false;
+        $doctors = Doctor::all();
+
+        foreach ($doctors as $doctor){
+            if ($doctor->phone == $phone){
+                $flag = true;
+                break;
+            }
+        }
+        return $flag;
+        //dnd($doctor);
+//        if ($doctor){
+//            return true;
+//        }else{
+//            return false;
+//        }
+    }
+
+    //Check if doctor's phone number exists
+    public static function isDoctorEmailExists($email){
+        $doctor = Doctor::all()->where('email', $email)->first();
+        if ($doctor){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     //Check if the price is valid
 //    public static function isValidPrice($price){
 //        if (empty($price) || !is_numeric($price) || $price<0) {
