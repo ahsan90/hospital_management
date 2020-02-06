@@ -19,12 +19,12 @@ if (isset($_SESSION['slots'] )){
     $slots = "";
 }
 
-echo $datePicked;
+//echo $datePicked;
 
 ?>
 
 
-<form action="<?=SROOT?>appointment/bookingPost" method="post" id="booking-form" class="mt-5">
+<form action="<?=SROOT?>appointment/bookingAjax" method="post" id="booking-form" class="mt-5">
     <fieldset  class="scheduler-border">
         <legend  class="scheduler-border">Book an Appointment</legend>
 
@@ -33,7 +33,7 @@ echo $datePicked;
             <label for="Doctor">Select from available doctors</label>
 
 
-            <select class="form-control" name="doctorId">
+            <select class="form-control" name="doctorId" id="doctor_idChange">
                 <?php
                 if ($doctors != ""){
                     foreach ($doctors as $doctor){
@@ -61,6 +61,21 @@ echo $datePicked;
                 ?>
             </select>
         </div>
+
+        <script>
+            $('#doctor_idChange').change(function(){
+                //alert($(this).val());
+                let doctor_id = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: '<?=SROOT?>appointment/bookingAjax',
+                    data: {doctor_id},
+                    success: function (response) {
+                        console.log(response.data);
+                    }
+                });
+            })
+        </script>
 
         <div class="form-group">
             <button type="submit" name="submit" class="btn btn-primary btn-block">Book</button>

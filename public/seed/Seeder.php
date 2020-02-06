@@ -15,11 +15,11 @@ class Seeder
         $specialities = array("Family Physician", "Internal Medicine Physician", "Surgeon", "Psychiatrist", "Cardiologist",
                         "Dermatologist", "Infectious Disease Physician", "Neurologist", "Radiologist", "Oncologist", "Nephrologist");
 
-        for ($i = 0; $i <= 10; $i++){
+        //for ($i = 0; $i <= 10; $i++){
             $gender = $faker->randomElement(['male', 'female']);
             $username = $faker->regexify('[A-Za-z0-9]{6}');
-            Doctor::saveValidDoctorInfo($role_id, $faker->name, $gender, $specialities[$i], $faker->phoneNumber, $faker->email, $faker->address, $username, $password);
-        }
+            Doctor::saveValidDoctorInfo($role_id, $faker->name, $gender, $faker->randomElement($specialities), $faker->phoneNumber, $faker->email, $faker->address, $username, $password);
+        //}
 
 
 
@@ -84,7 +84,7 @@ class Seeder
     //create schedule data for appointment table
     public static function scheduleSeedData(){
         $startTime = 9.00;
-        $endTime = 17.00;
+        $endTime = 16.00;
         for ($startTime; $startTime<=$endTime; $startTime++){
             $schedule = new Schedule();
             $scheduleTime = $startTime;
@@ -99,9 +99,9 @@ class Seeder
         self::scheduleSeedData();//create schedule
 
         //create doctors fake data
-        //for ($i = 0; $i<=10; $i++){
-            //self::doctorsDbSeed();
-        //}
+        for ($i = 0; $i<=50; $i++){
+            self::doctorsDbSeed();
+        }
 
         //create nurse fake data
 //        for ($i=0; $i <= 20; $i++){

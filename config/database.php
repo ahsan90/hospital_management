@@ -73,10 +73,11 @@ Manager::schema()->dropIfExists('appointments');
 Manager::schema()->create('appointments', function($table){
     $table->increments('id');
     $table->string('date');
+    $table->string('time');
     $table->integer('doctor_id')->nullable(false);
     $table->integer('patient_id')->nullable(true);
     //$table->integer('nurse_id')->nullable(false);
-    $table->integer('schedule_id')->nullable(false);
+    //$table->integer('schedule_id')->nullable(false);
     $table->timestamps();
 });
 

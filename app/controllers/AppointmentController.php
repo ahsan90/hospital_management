@@ -21,9 +21,7 @@ class AppointmentController extends Controller
             }
         }
 
-        //dnd($selectedDoctorSpecializations);
         $_SESSION['doctors_specialization'] = $selectedDoctorSpecializations;
-        //dnd($_SESSION['doctors_specialization']);
 
         $this->view->render('appointment/search');
     }
@@ -33,7 +31,7 @@ class AppointmentController extends Controller
             $specialization = Input::get('specialization');
             $datePicked = Input::get('date');
             $doctorsOnSpecialization = Doctor::all()->where('specialization', $specialization);
-
+            //dnd($specialization);
 
 
             $_SESSION['doctors'] = $doctorsOnSpecialization;
@@ -77,11 +75,40 @@ class AppointmentController extends Controller
         $this->view->render('appointment/book');
     }
 
-    private function checkScheduleIsDifferent($currentTime, $id){
-        $time = Schedule::all()->find($id)->time;
-        return $time != $currentTime;
+    public function bookingAjaxAction(){
+        //$slot = Input::get('slot');
+        $datePicked = Input::get('datePicked');
+        $doctor_id = Input::get('doctor_id');
+        $selectedSchedules = array();
+
+        $schedules = Schedule::all();
+
+        foreach ($schedules as $schedule){
+            if (!$this->checkIfScheduleAvail($doctor_id, $schedule->time, $datePicked)){
+                $selectedSchedules[] = $schedule->time;
+            }
+        }
+
+        //$response = ['success' => true, 'data' => [$selectedSchedules]];
+        $response = ['success' => true, 'data' => [$selectedSchedules]];
+        $this->jsonResponse($response);
+
+        //dnd($selectedSchedules);
+
+        //dnd($schedudes->find(2)->time);
     }
 
+    public function checkIfScheduleAvail($doctor_id, $time, $date){
+        $flag = false;
+        $appointments = Appointment::all();
+        foreach ($appointments as $appointment){
+            if ($appointment->date == $date && $appointment->doctor_id == $doctor_id && $appointment->time = $time){
+                $flag = true;
+                break;
+            }
+        }
+        return $flag;
+    }
 
 
     public function bookingPostAction(){
