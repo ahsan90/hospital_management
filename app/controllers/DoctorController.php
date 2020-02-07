@@ -10,11 +10,17 @@ class DoctorController extends Controller
 
     //Create a doctor's account
     public function createAction(){
+        if (LoginHelper::isACurrentNurse() || LoginHelper::isACurrentPatient()){
+            Router::redirect('home', '<p class="alert alert-danger">You are not authorized</p>');
+        }
         $this->view->render('doctor/create');
     }
 
     //Create a new doctor' account post action
     public function createPostAction(){
+        if (LoginHelper::isACurrentNurse() || LoginHelper::isACurrentPatient()){
+            Router::redirect('home', '<p class="alert alert-danger">You are not authorized</p>');
+        }
         if ($_POST){
             $username = Input::get('username');
             $password = Input::get('password');
@@ -66,20 +72,36 @@ class DoctorController extends Controller
 
     //Visit doctor's profile
     public function profileAction($id){
-        $this->view->render('doctor/profile', Doctor::all()->find($id));
+        if (LoginHelper::isACurrentDoctor() || LoginHelper::isAdmin()) {
+            $this->view->render('doctor/profile', Doctor::all()->find($id));
+        }else{
+            Router::redirect('home', '<p class="alert alert-danger">You are not authorized</p>');
+        }
     }
 
     //List all available doctors
     public function listingAction(){
-        $this->view->render('doctor/list', Doctor::all());
+        if (LoginHelper::isAdmin()){
+            $this->view->render('doctor/list', Doctor::all());
+        }else{
+            Router::redirect('home', '<p class="alert alert-danger">You are not authorized</p>');
+        }
     }
 
+
+    //Edit doctor's profile
 	public function editAction($id){
+        if (LoginHelper::isACurrentNurse() || LoginHelper::isACurrentPatient()){
+            Router::redirect('home', '<p class="alert alert-danger">You are not authorized</p>');
+        }
         $this->view->render('doctor/edit', Doctor::all()->find($id));
     }
 
     //Update doctors's information based on the form inputs
     public function updateAction($id){
+        if (LoginHelper::isACurrentNurse() || LoginHelper::isACurrentPatient()){
+            Router::redirect('home', '<p class="alert alert-danger">You are not authorized</p>');
+        }
         $username = Input::get('username');
         $password = Input::get('password');
         $role_id = (int)Input::get('role_id');
@@ -140,6 +162,9 @@ class DoctorController extends Controller
 
     //Delete docotor's account
     public function deleteAction($id){
+        if (LoginHelper::isACurrentNurse() || LoginHelper::isACurrentPatient()){
+            Router::redirect('home', '<p class="alert alert-danger">You are not authorized</p>');
+        }
         $user_id = Doctor::all()->find($id)->user_id;
 
         //Delete both associated login account and doctor's account

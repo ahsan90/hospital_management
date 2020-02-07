@@ -10,11 +10,16 @@ class NurseController extends Controller
 
     //create nurse account
     public function createAction(){
+        //redirect if unauthorized
+        self::isUnauthorized();
         $this->view->render('nurse/create');
     }
 
     //Create save profile after method post action
     public function createPostAction(){
+        //redirect if unauthorized
+        self::isUnauthorized();
+
         if ($_POST){
             $username = Input::get('username');
             $password = Input::get('password');
@@ -56,6 +61,9 @@ class NurseController extends Controller
 
     //list all nurse
     public function listingAction(){
+        if (!LoginHelper::isAdmin()){
+            Router::redirect('home', '<p class="alert alert-danger">Unauthorized Access...</p>');
+        }
         $this->view->render('nurse/list', Nurse::all());
     }
 
@@ -66,6 +74,7 @@ class NurseController extends Controller
 
     //update nurse profile
     public function updateAction($id){
+        self::isUnauthorized();
         $username = Input::get('username');
         $password = Input::get('password');
         $role_id = (int)Input::get('role_id');
@@ -121,6 +130,7 @@ class NurseController extends Controller
 
     //Delete nurse account
     public function deleteAction($id){
+        self::isUnauthorized();
         $user_id = Nurse::all()->find($id)->user_id;
 
         //Delete both associated login account and doctor's account
@@ -133,5 +143,12 @@ class NurseController extends Controller
 
         //session_destroy();
         Router::redirect('');
+    }
+
+    //determine if unauthorized access
+    private static function isUnauthorized(){
+        if (LoginHelper::isACurrentDoctor() || LoginHelper::isACurrentPatient()){
+            Router::redirect('home', '<p class="alert alert-danger">Unauthorized</p>');
+        }
     }
 }

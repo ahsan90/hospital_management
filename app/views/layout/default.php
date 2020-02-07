@@ -17,7 +17,7 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
                 <a class="navbar-brand" href="<?=SROOT?>">DOUH HMS</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,15 +32,26 @@
                         <li class="nav-item">
                             <a class="nav-link" href="<?=SROOT?>home/about">About</a>
                         </li>
+                        <?php if (LoginHelper::isAdmin()){?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?=SROOT?>doctor/listing">Patient List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?=SROOT?>nurse/listing">Nurse List</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?=SROOT?>doctor/listing">Doctor List</a>
                         </li>
+                        <?php } if (!LoginHelper::isLoggedIn()) {?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?=SROOT?>patient/register">Register</a>
                         </li>
+                        <?php } ?>
+                        <?php if (!LoginHelper::isACurrentDoctor() || !LoginHelper::isLoggedIn()) {?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?=SROOT?>appointment/search">Book an appointment</a>
                         </li>
+                        <?php } ?>
                         <?php if (LoginHelper::isLoggedIn()){?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?=SROOT?>auth/logout">Logout</a>
@@ -53,11 +64,22 @@
 
                         <?php if (LoginHelper::isAdmin()) {?>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?=SROOT?>admin/index">Admin</a>
+                            <a class="nav-link" href="<?=SROOT?>admin/index"><i class="fa fa-cog"></i>&nbsp;Admin</a>
                         </li>
 
-                        <?php } ?>
-
+                        <?php } elseif (LoginHelper::isACurrentDoctor()){?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?=SROOT?>doctor/profile/<?php echo LoginHelper::getCurrentUser()->id?>"><i class="fa fa-user"></i>&nbsp;Doctor</a>
+                            </li>
+                        <?php }elseif (LoginHelper::isACurrentNurse()){?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?=SROOT?>nurse/profile/<?php echo LoginHelper::getCurrentUser()->id?>"><i class="fa fa-user"></i>&nbsp;Nurse</a>
+                        </li>
+                        <?php }elseif (LoginHelper::isACurrentPatient()){?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?=SROOT?>nurse/profile/<?php echo LoginHelper::getCurrentUser()->id?>"><i class="fa fa-user"></i>&nbsp;<?=LoginHelper::getCurrentUser()->name?>(Patient)</a>
+                            </li>
+                        <?php }?>
                     </ul>
                 </div>
 

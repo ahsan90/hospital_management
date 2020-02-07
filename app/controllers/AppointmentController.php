@@ -170,14 +170,12 @@ class AppointmentController extends Controller
     }
 
     //Check if the schedule is available
-    public function isTheTimeBooked($doctor_id, $time, $date){
+    private function isTheTimeBooked($doctor_id, $time, $date){
         $flag = false;
         $appointments = Appointment::all();
         foreach ($appointments as $appointment){
             if ($appointment->date == $date && $appointment->doctor_id == $doctor_id && $appointment->time == $time){
                 return true;
-                //$flag = true;
-                //break;
             }
         }
         return $flag;

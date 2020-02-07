@@ -17,7 +17,10 @@
     ?>
 </div>
 
-<h1 class="text-center red">Welcome to DOUH Health care system...</h1>
+<div class="jumbotron-fluid">
+    <h1 class="text-center green">Welcome to DOUH Health care system...</h1>
+</div>
+
 <?php $this->end(); ?>
 
 

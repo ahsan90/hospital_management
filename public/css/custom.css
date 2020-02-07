@@ -1,7 +1,12 @@
+body{
+    background-color: whitesmoke;
+    max-width: 100%;
+}
 
-.red{
+.green{
     color: green;
 }
+
 
 /*Admin area*/
 #admin{

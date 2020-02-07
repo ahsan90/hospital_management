@@ -17,7 +17,7 @@
     ?>
 </div>
 
-<h1 class="text-center red">Welcome to DOUH Health care system...</h1>
+<h1 class="text-center green">Welcome to DOUH Health care system...</h1>
 <div class="about">
     <h2>Team Members</h2>
     <table class="table-striped mb-4 table-bordered table-hover table-warning mx-auto">

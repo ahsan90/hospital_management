@@ -28,7 +28,24 @@ class AuthController extends Controller
         if (LoginHelper::isValidUser($username, $password)){
             //dnd($_SESSION['password']);
             $msg = "<h2>Login success</h2>";
-            $this->view->render('test', $msg);
+            if (LoginHelper::isAdmin()){
+                Router::redirect('admin',$msg);
+            }
+            elseif (LoginHelper::isACurrentPatient()){
+                $patient = UserHelper::getCurrentLoggedInPatient();
+                Router::redirect('patient/profile/'.$patient->id, $msg);
+            }
+            elseif (LoginHelper::isACurrentNurse()){
+                $nurse = UserHelper::getCurrentLoggedInNurse();
+                Router::redirect('nurse/profile/'.$nurse->id, $msg);
+            }
+            elseif (LoginHelper::isACurrentDoctor()){
+                $doctor = UserHelper::getCurrentLoggedInDoctor();
+                Router::redirect('doctor/profile/'.$doctor->id, $msg);
+            }else{
+                Router::redirect('home');
+            }
+            //$this->view->render('test', $msg);
         }else{
             $msg = "<p class='alert alert-danger'>Invalid Username/Password combination</p>";
             Router::redirect('auth/login', $msg);
