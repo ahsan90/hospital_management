@@ -23,9 +23,11 @@ class Appointment extends Model{
         }
     }
 
-    public function saveAppointment($schedule_id, $doctor_id, $date){
+    public function saveAppointment($patient_id, $doctor_id, $time, $date){
         $appointment = new Appointment();
-        $appointment->schedule_id = $schedule_id;
+        //$appointment->schedule_id = $schedule_id;
+        $appointment->patient_id = $patient_id;
+        $appointment->time = $time;
         $appointment->doctor_id = $doctor_id;
         $appointment->date = $date;
         $appointment->save();

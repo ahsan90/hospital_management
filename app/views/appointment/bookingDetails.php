@@ -35,7 +35,7 @@ if (isset($_SESSION['slot'] )){
 
     <?php
     echo "<tr><td>".$appointment->date."</td>";
-    echo "<td>".Schedule::all()->find($slot)->time."</td>";
+    echo "<td>".$appointment->time."</td>";
     echo "<td>".$doctor->name."</td>";
     echo "<td>".$doctor->specialization."</td></tr>";
 

@@ -99,18 +99,18 @@ class Seeder
         self::scheduleSeedData();//create schedule
 
         //create doctors fake data
-        for ($i = 0; $i<=50; $i++){
+        for ($i = 0; $i<=15; $i++){
             self::doctorsDbSeed();
         }
 
         //create nurse fake data
-//        for ($i=0; $i <= 20; $i++){
-//            self::nurseDbSeed();
-//        }
-//
-//        //create patient fake data
-//        for ($i = 0; $i<=100; $i++){
-//            self::patientDbSeed();
-//        }
+        for ($i=0; $i <= 20; $i++){
+            self::nurseDbSeed();
+        }
+
+        //create patient fake data
+        for ($i = 0; $i<=100; $i++){
+            self::patientDbSeed();
+        }
     }
 }

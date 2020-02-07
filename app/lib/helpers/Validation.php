@@ -109,6 +109,21 @@ class Validation
         }
     }
 
+    //Validate booking date on the form
+    public static function isValidBookingDate($date){
+
+        date_default_timezone_set('America/Halifax');
+
+        $datePicked = getdate(strtotime($date));
+        $currentDate = getdate(strtotime(date('Y-m-d')));
+
+        if ($datePicked >= $currentDate){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     //Check if the price is valid
 //    public static function isValidPrice($price){
 //        if (empty($price) || !is_numeric($price) || $price<0) {
