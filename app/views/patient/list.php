@@ -6,7 +6,7 @@ $this->setSiteTitle('Patient listing');
 $this->start('body');
 if ($data != null){
     ?>
-
+<div class="mx-auto">
     <table class="table table-hover">
         <thead>
         <tr>
@@ -47,6 +47,7 @@ if ($data != null){
         </tbody>
     </table>
 
+</div>
     <?php
 }else{
     echo "<h2>No record found...!</h2>";

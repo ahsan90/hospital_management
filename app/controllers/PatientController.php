@@ -71,7 +71,7 @@ class PatientController extends Controller
     }
 
     public function profileAction($id){
-        if (!LoginHelper::isACurrentNurse() || !LoginHelper::isACurrentDoctor()){
+        if (LoginHelper::isACurrentNurse() || LoginHelper::isACurrentDoctor()){
             Router::redirect('home', '<p class="alert alert-danger">Unauthorized</p>');
         }
         $this->view->render('patient/profile', Patient::all()->find($id));
@@ -84,7 +84,7 @@ class PatientController extends Controller
     }
 
     public function editAction($id){
-        if (!LoginHelper::isACurrentNurse() || !LoginHelper::isACurrentDoctor()){
+        if (LoginHelper::isACurrentNurse() || LoginHelper::isACurrentDoctor()){
             Router::redirect('home', '<p class="alert alert-danger">Unauthorized</p>');
         }
         //$patient = Patient::all()->find($id)->first();
@@ -92,7 +92,7 @@ class PatientController extends Controller
     }
 
     public function updateAction($id){
-        if (!LoginHelper::isACurrentNurse() || !LoginHelper::isACurrentDoctor()){
+        if (LoginHelper::isACurrentNurse() || LoginHelper::isACurrentDoctor()){
             Router::redirect('home', '<p class="alert alert-danger">Unauthorized</p>');
         }
 
