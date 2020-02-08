@@ -60,6 +60,8 @@ $this->start('body');
 </table>
 
 <?php
+//Make sure current loggedIn patient is not allowed to see the appointment list booked by other patients
+if (!LoginHelper::isACurrentPatient()){
 $appointments = Appointment::all()->where('doctor_id', $doctor->id);
 
 $count = UserHelper::countObj($appointments);
@@ -100,6 +102,7 @@ if ($count>0){
     <?php
 }else{
     echo "<p class='alert alert-warning mx-auto'>You do not have any appointments yet..</p>";
+}
 }
 ?>
 
