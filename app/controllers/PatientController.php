@@ -9,11 +9,17 @@ class PatientController extends Controller
     }
 
     public function registerAction(){
+        if (LoginHelper::isACurrentPatient()){
+            Router::redirect('patient/profile/'.UserHelper::getCurrentLoggedInPatient()->id);
+        }
         $patient = new Patient();
         $this->view->render('patient/register', $patient);
     }
 
     public function registerPostAction(){
+        if (LoginHelper::isACurrentPatient()){
+            Router::redirect('patient/profile/'.UserHelper::getCurrentLoggedInPatient()->id);
+        }
         if ($_POST){
             $username = Input::get('username');
             $password = Input::get('password');
@@ -70,12 +76,24 @@ class PatientController extends Controller
         }
     }
 
+    //Go to patient profile
     public function profileAction($id){
-        if (LoginHelper::isACurrentNurse() || LoginHelper::isACurrentDoctor()){
+        if (LoginHelper::isACurrentDoctor() || !LoginHelper::isLoggedIn()){
             Router::redirect('home', '<p class="alert alert-danger">Unauthorized</p>');
+        }
+
+        //Make sure if a patient loggedIn he/she is only able to access his/her own profile
+        if (LoginHelper::isACurrentPatient()){
+
+            if ($id != UserHelper::getCurrentLoggedInPatient()->id){
+                Router::redirect('patient/profile/'.UserHelper::getCurrentLoggedInPatient()->id, '<p class="alert alert-danger">Unauthorized</p>');
+            }
+            //$id = UserHelper::getCurrentLoggedInPatient()->id;
         }
         $this->view->render('patient/profile', Patient::all()->find($id));
     }
+
+    //List all the patients
     public function listingAction(){
         if (!LoginHelper::isAdmin()){
             Router::redirect('home', '<p class="alert alert-danger">Unauthorized</p>');
@@ -83,8 +101,9 @@ class PatientController extends Controller
         $this->view->render('patient/list', Patient::all());
     }
 
+    //Edit patient profile
     public function editAction($id){
-        if (LoginHelper::isACurrentNurse() || LoginHelper::isACurrentDoctor()){
+        if (LoginHelper::isACurrentDoctor() || !LoginHelper::isLoggedIn()){
             Router::redirect('home', '<p class="alert alert-danger">Unauthorized</p>');
         }
         //$patient = Patient::all()->find($id)->first();
@@ -92,9 +111,10 @@ class PatientController extends Controller
     }
 
     public function updateAction($id){
-        if (LoginHelper::isACurrentNurse() || LoginHelper::isACurrentDoctor()){
+        if (LoginHelper::isACurrentDoctor() || !LoginHelper::isLoggedIn()){
             Router::redirect('home', '<p class="alert alert-danger">Unauthorized</p>');
         }
+
 
         $name = Input::get('name');
         $healCardNumber = Input::get('healthCardNumber');

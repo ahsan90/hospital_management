@@ -69,15 +69,15 @@
 
                         <?php } elseif (LoginHelper::isACurrentDoctor()){?>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?=SROOT?>doctor/profile/<?php echo LoginHelper::getCurrentUser()->id?>"><i class="fa fa-user"></i>&nbsp;Doctor</a>
+                                <a class="nav-link" href="<?=SROOT?>doctor/profile/<?php echo UserHelper::getCurrentLoggedInDoctor()->id?>"><i class="fa fa-user"></i>&nbsp;<?=UserHelper::getCurrentLoggedInDoctor()->name?> (Patient)Doctor</a>
                             </li>
                         <?php }elseif (LoginHelper::isACurrentNurse()){?>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?=SROOT?>nurse/profile/<?php echo LoginHelper::getCurrentUser()->id?>"><i class="fa fa-user"></i>&nbsp;Nurse</a>
+                            <a class="nav-link" href="<?=SROOT?>nurse/profile/<?php echo UserHelper::getCurrentLoggedInNurse()->id?>"><i class="fa fa-user"></i>&nbsp;<?=UserHelper::getCurrentLoggedInNurse()->name?> (Nurse)</a>
                         </li>
                         <?php }elseif (LoginHelper::isACurrentPatient()){?>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?=SROOT?>nurse/profile/<?php echo LoginHelper::getCurrentUser()->id?>"><i class="fa fa-user"></i>&nbsp;<?=LoginHelper::getCurrentUser()->name?>(Patient)</a>
+                                <a class="nav-link" href="<?=SROOT?>patient/profile/<?php echo UserHelper::getCurrentLoggedInPatient()->id?>"><i class="fa fa-user"></i>&nbsp;<?=UserHelper::getCurrentLoggedInPatient()->name?> (Patient)</a>
                             </li>
                         <?php }?>
                     </ul>
