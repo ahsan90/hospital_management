@@ -55,6 +55,7 @@ class Validation
     //Check if the health card number is exists
     public static function isHealthCardExists($healthCardNo){
         $patient = Patient::all()->where('healthCardNumber', $healthCardNo)->first();
+        //dnd($patient->healthCardNumber);
         if ($patient){
             return true;
         }else{

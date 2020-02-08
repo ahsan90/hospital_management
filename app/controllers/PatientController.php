@@ -160,5 +160,103 @@ class PatientController extends Controller
         Router::redirect('admin/index');
     }
 
+    //Show show medical record
+    public function medicalRecordAction($id){
+        $this->addRestrictionToMedInfo();
+        //dnd($id);
+        $this->view->render('patient/med_record', $id);
+    }
 
+    //Create medical record
+    public function create_med_recordAction($id){
+        $this->addRestrictionToMedInfo();
+        //dnd($id);
+        $this->view->render('patient/create_med_record', $id);
+    }
+
+    //update medical record
+    public function create_med_record_postAction($id){
+        $this->addRestrictionToMedInfo();
+        //dnd($id);
+        $blood_pressure = Input::get('blood_pressure');
+        $weight = Input::get('weight');
+        $height = Input::get('height');
+        $pulseRate = Input::get('pulseRate');
+
+        if (LoginHelper::isACurrentNurse()){
+            $nurseNote = Input::get('nurseNotes');
+        }
+        if (LoginHelper::isACurrentDoctor()){
+            $diagnose = Input::get('diagnose');
+        }
+
+        $medicalRecord = new MedicalRecord();
+        $medicalRecord->blood_pressure = $blood_pressure;
+        $medicalRecord->weight = $weight;
+        $medicalRecord->height = $height;
+        $medicalRecord->pulseRate = $pulseRate;
+        if (LoginHelper::isACurrentNurse()){
+            $medicalRecord->nurseNotes = $nurseNote;
+        }
+        if (LoginHelper::isACurrentDoctor()){
+            $medicalRecord->diagnose = $diagnose;
+        }
+        $medicalRecord->patient_id = $id;
+
+        $medicalRecord->save();
+
+        Router::redirect('patient/medicalRecord/'.$medicalRecord->id, '<p>Information saved successfully...!</p>');
+    }
+
+    //edit medical record
+    public function edit_med_recordAction($id){
+        $this->view->render('patient/edit_med_record', $id);
+    }
+    //update medical record
+    public function update_med_record_postAction($id){
+        $this->addRestrictionToMedInfo();
+        //dnd($id);
+        $medicalRecord = MedicalRecord::all()->find($id);
+        if ($_POST){
+            $blood_pressure = Input::get('blood_pressure');
+            $weight = Input::get('weight');
+            $height = Input::get('height');
+            $pulseRate = Input::get('pulseRate');
+
+            if (LoginHelper::isACurrentNurse()){
+                $nurseNote = Input::get('nurseNotes');
+            }
+            if (LoginHelper::isACurrentDoctor()){
+                $diagnose = Input::get('diagnose');
+            }
+
+            //$medicalRecord = new MedicalRecord();
+            $medicalRecord->blood_pressure = $blood_pressure;
+            $medicalRecord->weight = $weight;
+            $medicalRecord->height = $height;
+            $medicalRecord->pulseRate = $pulseRate;
+            if (LoginHelper::isACurrentNurse()){
+                $medicalRecord->nurseNotes = $nurseNote;
+            }
+            //dnd($medicalRecord->nurseNotes);
+            if (LoginHelper::isACurrentDoctor()){
+                $medicalRecord->diagnose = $diagnose;
+            }
+            //$medicalRecord->patient_id = $id;
+
+            $medicalRecord->save();
+
+            Router::redirect('patient/medicalRecord/'.$medicalRecord->patient_id, '<p class="alert alert-success">Information updated successfully...!</p>');
+        }else{
+            Router::redirect('patient/edit_med_record/'.$id);
+        }
+        //$this->view->render('patient/med_record');
+    }
+
+    //Add restriction to patients' medical information other than a doctor or a nurse
+    private function addRestrictionToMedInfo(){
+        if (LoginHelper::isACurrentPatient() || !LoginHelper::isLoggedIn()){
+            Router::redirect('home', '<p class="alert alert-danger">Unauthorized........!!</p>');
+        }
+    }
 }

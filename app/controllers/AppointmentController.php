@@ -76,9 +76,11 @@ class AppointmentController extends Controller
                     Router::redirect('appointment/search', '<p class="alert alert-danger">Health Card number cannot be empty</p>');
                 }
                 if (!Validation::isHealthCardExists($healthCardNumber)){
+                    //dnd($healthCardNumber);
+                    //dnd(Validation::isHealthCardExists($healthCardNumber));
                     Router::redirect('appointment/search', '<p class="alert alert-danger">Invalid Health Card Number</p>');
                 }
-                $_SESSION['healthCardNo'] = Input::get('healthCardNo');
+                $_SESSION['healthCardNo'] = $healthCardNumber;
             }
 
 
@@ -178,8 +180,10 @@ class AppointmentController extends Controller
                 $appointment->delete();
                 if (LoginHelper::isACurrentPatient()) Router::redirect('patient/profile/'.UserHelper::getCurrentLoggedInPatient()->id, '<p class="alert alert-success">Appointment deleted...!!</p>');
                 if (LoginHelper::isAdmin()) Router::redirect('admin/index', '<p class="alert alert-success">Appointment deleted</p>');
+            }else{
+                Router::redirect('home/index', '<p class="alert alert-success">Unauthorized</p>');
             }
-            dnd($id);
+            //dnd($id);
         }
         else{
             Router::redirect('home/index', '<p class="alert alert-success">Unauthorized</p>');

@@ -69,5 +69,53 @@ if ($nurse != null) { ?>
     echo "<div><p class='alert alert-info'>No data available</p></div>";
 }
 
+?>
+
+<?php
+$appointments = Appointment::all()->sortBy('date');
+
+$count = UserHelper::countObj($appointments);
+//dnd($count);
+if ($count>0){
+    ?>
+    <div class="jumbotron mx-auto">
+        <h2 class="mb-2">Patients' appointment listing</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Appointment date</th>
+
+                <th>Appointment time</th>
+                <th>Doctor Name</th>
+
+                <th>Patient Name</th>
+
+                <!--                <th>Cancel Appointment</th>-->
+            </tr>
+            </thead>
+            <tbody>
+
+            <?php
+            foreach ($appointments as $appointment){
+                echo "<tr><td>".$appointment->date."</td>";
+                echo "<td>".$appointment->time."</td>";
+                echo "<td>".Doctor::all()->where('id', $appointment->doctor_id)->first()->name."</td>";
+                echo "<td><a href='".SROOT."patient/medicalRecord/" . $appointment->patient_id. "' title='See medical information details' class='btn btn-warning btn-xs' data-toggle='tooltip'><i class='fa fa-user'></i></a>
+                            ".Patient::all()->where('id', $appointment->patient_id)->first()->name."</td>";
+                //echo "<td>".Doctor::all()->where('id', $appointment->doctor_id)->first()->specialization."</td>";
+                //echo "<td><a href='".SROOT."appointment/delete/" . $appointment->id. "' title='Delete appointment' class='btn btn-danger btn-xs mx-auto' data-toggle='tooltip'><i class='fa fa-trash'></i></a></td></tr>";
+            }
+            ?>
+            </tbody>
+        </table>
+    </div>
+
+    <?php
+}else{
+    echo "<p class='alert alert-warning mx-auto'>You do not have any appointments yet..</p>";
+}
+?>
+
+<?php
 $this->end();
 ?>

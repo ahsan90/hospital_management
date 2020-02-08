@@ -3,8 +3,6 @@ $this->setSiteTitle('Patient Profile');
 
 $this->start('body');
 ?>
-<div class="container">
-
     <div class="mt-3">
         <?php if (isset($_SESSION['msg']) || $msg != "" || isset($_REQUEST['msg'])){
             if (isset($_SESSION['msg']))
@@ -74,9 +72,6 @@ $this->start('body');
 
         </tbody>
     </table>
-
-</div>
-
 <?php
     $appointments = Appointment::all()->where('patient_id', $patient->id);
 

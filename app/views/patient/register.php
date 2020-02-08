@@ -7,7 +7,6 @@ $newPatient = $data;
 
 ?>
 
-<div class="container">
     <div class="mt-3">
         <?php if (isset($_SESSION['msg']) || $msg != null)
         {
@@ -70,7 +69,7 @@ $newPatient = $data;
             </div>
         </fieldset>
     </form>
-</div>
+
 
 <?php
 $this->end();
