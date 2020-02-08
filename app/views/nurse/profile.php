@@ -5,12 +5,18 @@ $this->start('body');
 ?>
 
     <div class="mt-3">
-        <?php if (isset($_SESSION['msg']) || $msg != null)
-        {
-            echo $_SESSION['msg'];
-            unset($_SESSION['msg']);
-        }elseif ($msg != null){
-            echo $msg;
+        <?php if (isset($_SESSION['msg']) || $msg != "" || isset($_REQUEST['msg'])){
+            if (isset($_SESSION['msg']))
+            {
+                echo $_SESSION['msg'];
+                unset($_SESSION['msg']);
+            }elseif ($msg != null){
+                echo "<div>".$msg."</div>";
+            }
+            elseif (isset($_REQUEST['msg'])){
+                echo $_REQUEST['msg'];
+                unset($_REQUEST['msg']);
+            }
         }
         ?>
     </div>
@@ -50,8 +56,8 @@ if ($nurse != null) { ?>
         echo "<td>$nurse->updated_at</td>";
         echo "<td>" . Role::all()->where('id', $nurse->role_id)->first()->roleType . "</td>";
         echo "<td><a href='" . SROOT . "nurse/edit/" . $nurse->id . "' title='Edit Record' class='btn btn-warning btn-xs' data-toggle='tooltip'><i class='fa fa-edit'></i></a></td>";
-        echo "<td><a href='" . SROOT . "nurse/profile/" . $nurse->id . "' title='Go to Profile' class='btn btn-info btn-xs' data-toggle='tooltip'><i class='fa fa-user'></i></a></td>";
-        echo "<td><a href='" . SROOT . "nurse/delete/" . $nurse->id . "' title='Delete record' class='btn btn-danger btn-xs' data-toggle='tooltip'><i class='fa fa-trash'></i></a></td>";
+//        echo "<td><a href='" . SROOT . "nurse/profile/" . $nurse->id . "' title='Go to Profile' class='btn btn-info btn-xs' data-toggle='tooltip'><i class='fa fa-user'></i></a></td>";
+//        echo "<td><a href='" . SROOT . "nurse/delete/" . $nurse->id . "' title='Delete record' class='btn btn-danger btn-xs' data-toggle='tooltip'><i class='fa fa-trash'></i></a></td>";
         echo "</tr>";
 
         ?>

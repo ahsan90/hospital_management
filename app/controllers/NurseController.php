@@ -130,7 +130,14 @@ class NurseController extends Controller
 
     //Delete nurse account
     public function deleteAction($id){
-        self::isUnauthorized();
+        //self::isUnauthorized();
+        if (!LoginHelper::isAdmin()){
+            if (LoginHelper::isACurrentNurse()){
+                Router::redirect('nurse/profile/'.UserHelper::getCurrentLoggedInNurse()->id, '<p class="alert alert-danger">You are not authorized to delete your account. Please contact admin</p>');
+            }else{
+                Router::redirect('home', '<p>Unauthorized</p>');
+            }
+        }
         $user_id = Nurse::all()->find($id)->user_id;
 
         //Delete both associated login account and doctor's account
@@ -142,7 +149,8 @@ class NurseController extends Controller
         $_SESSION['msg'] = "<p class='alert alert-danger'>Record deleted successfully</p>";
 
         //session_destroy();
-        Router::redirect('');
+
+        Router::redirect('admin', '<p class="alert alert-success">Account deleted</p>');
     }
 
     //determine if unauthorized access

@@ -69,7 +69,7 @@
 
                         <?php } elseif (LoginHelper::isACurrentDoctor()){?>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?=SROOT?>doctor/profile/<?php echo UserHelper::getCurrentLoggedInDoctor()->id?>"><i class="fa fa-user"></i>&nbsp;<?=UserHelper::getCurrentLoggedInDoctor()->name?> (Patient)Doctor</a>
+                                <a class="nav-link" href="<?=SROOT?>doctor/profile/<?php echo UserHelper::getCurrentLoggedInDoctor()->id?>"><i class="fa fa-user"></i>&nbsp;Dr. <?=UserHelper::getCurrentLoggedInDoctor()->name?> (Doctor)</a>
                             </li>
                         <?php }elseif (LoginHelper::isACurrentNurse()){?>
                         <li class="nav-item">

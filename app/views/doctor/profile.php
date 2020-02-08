@@ -22,8 +22,11 @@ $this->start('body');
         <th>Phone</th>
         <th>Email</th>
         <th>Address</th>
+        <?php if (LoginHelper::isAdmin() || LoginHelper::isACurrentDoctor()) {?>
         <th>Role Type</th>
+
         <th>Actions</th>
+        <?php }?>
     </tr>
     </thead>
     <tbody>
@@ -36,14 +39,23 @@ $this->start('body');
         echo "<td>$doctor->phone</td>";
         echo "<td>$doctor->email</td>";
         echo "<td>$doctor->address</td>";
+
+        if (LoginHelper::isAdmin() || LoginHelper::isACurrentDoctor()){
         echo "<td>".Role::all()->where('id', $doctor->role_id)->first()->roleType."</td>";
-        echo "<td><a href='".SROOT."doctor/edit/" . $doctor->id. "' title='Edit Record' class='btn btn-warning btn-xs btnMargin' data-toggle='tooltip'><i class='fa fa-edit'></i></a></td>";
+
+            echo "<td><a href='".SROOT."doctor/edit/" . $doctor->id. "' title='Edit Record' class='btn btn-warning btn-xs btnMargin' data-toggle='tooltip'><i class='fa fa-edit'></i></a></td>";
+        }
         echo "</tr>";
 
     ?>
 
     </tbody>
 </table>
+
+<?php
+
+//echo "<p>".$doctor->id."</p>";
+?>
 
 <?php
 $this->end();

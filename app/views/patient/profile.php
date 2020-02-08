@@ -5,7 +5,7 @@ $this->start('body');
 ?>
 <div class="container">
 
-    <div>
+    <div class="mt-3">
         <?php if (isset($_SESSION['msg']) || $msg != "" || isset($_REQUEST['msg'])){
             if (isset($_SESSION['msg']))
             {
@@ -21,6 +21,7 @@ $this->start('body');
         }
         ?>
     </div>
+    <h2 class="mt-5">Your profile information</h2>
     <table class="table table-hover">
         <thead>
         <tr>
@@ -75,6 +76,53 @@ $this->start('body');
     </table>
 
 </div>
+
+<?php
+    $appointments = Appointment::all()->where('patient_id', $patient->id);
+
+    $count = UserHelper::countObj($appointments);
+    //dnd($count);
+    if ($count>0){
+        ?>
+        <div class="jumbotron mx-auto">
+            <h2>Appointment listing</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Appointment date</th>
+
+                    <th>Appointment time</th>
+
+                    <th>Doctor Name</th>
+
+                    <th>Specialization</th>
+                    <th>Cancel Appointment</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <?php
+                foreach ($appointments as $appointment){
+                    echo "<tr><td>".$appointment->date."</td>";
+                    echo "<td>".$appointment->time."</td>";
+                    //echo "<td>".Doctor::all()->where('id', $appointment->doctor_id)->first()->name."</td>";
+                    echo "<td><a href='".SROOT."doctor/profile/" . $appointment->doctor_id. "' title='Doctor details' class='btn btn-warning btn-xs' data-toggle='tooltip'><i class='fa fa-user'></i></a>
+                            ".Doctor::all()->where('id', $appointment->doctor_id)->first()->name."</td>";
+                    echo "<td>".Doctor::all()->where('id', $appointment->doctor_id)->first()->specialization."</td>";
+                    echo "<td><a href='".SROOT."appointment/delete/" . $appointment->id. "' title='Delete appointment' class='btn btn-danger btn-xs mx-auto' data-toggle='tooltip'><i class='fa fa-trash'></i></a>
+                            </td></tr>";
+                }
+                ?>
+                </tbody>
+            </table>
+        </div>
+
+        <?php
+    }else{
+        echo "<p class='alert alert-warning mx-auto'>You do not have any appointments yet..</p>";
+    }
+?>
+
 <?php
 $this->end();
 ?>

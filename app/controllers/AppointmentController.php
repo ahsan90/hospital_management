@@ -113,7 +113,7 @@ class AppointmentController extends Controller
                 unset($_SESSION['healthCardNo']);
                 $patient = UserHelper::getPatientBasedOnHealthCardNo($heathCardNumber);
             }else{
-                $patient = LoginHelper::getCurrentUser();
+                $patient = UserHelper::getCurrentLoggedInPatient();
             }
 
             $appointment->saveAppointment($patient->id, $doctor_id, $slot, $datePicked);
@@ -167,6 +167,23 @@ class AppointmentController extends Controller
         //dnd($selectedSchedules);
 
         //dnd($schedudes->find(2)->time);
+    }
+
+    //Delete an Appointment
+    public function deleteAction($id){
+        if (LoginHelper::isACurrentPatient() || LoginHelper::isAdmin()){
+            //A patient is only allowed to delete his/her own appointment
+            $appointment = Appointment::all()->find($id);
+            if ($appointment->patient_id == UserHelper::getCurrentLoggedInPatient()->id || LoginHelper::isAdmin()){
+                $appointment->delete();
+                if (LoginHelper::isACurrentPatient()) Router::redirect('patient/profile/'.UserHelper::getCurrentLoggedInPatient()->id, '<p class="alert alert-success">Appointment deleted...!!</p>');
+                if (LoginHelper::isAdmin()) Router::redirect('admin/index', '<p class="alert alert-success">Appointment deleted</p>');
+            }
+            dnd($id);
+        }
+        else{
+            Router::redirect('home/index', '<p class="alert alert-success">Unauthorized</p>');
+        }
     }
 
     //Check if the schedule is available

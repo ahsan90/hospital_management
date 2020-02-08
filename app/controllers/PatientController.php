@@ -157,7 +157,7 @@ class PatientController extends Controller
         $_SESSION['msg'] = "<p class='alert alert-danger'>Record deleted successfully</p>";
 
         //session_destroy();
-        Router::redirect('');
+        Router::redirect('admin/index');
     }
 
 

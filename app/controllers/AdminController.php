@@ -14,10 +14,30 @@ class AdminController extends Controller
         $this->view->render('admin/index');
     }
 
+    public function editAction($id){
+        $this->restrictUnauthorizedUser();
+        $this->view->render('admin/edit', User::all()->find($id));
+    }
+
+    public function editpostAction($id){
+        $this->restrictUnauthorizedUser();
+
+        $username = Input::get('username');
+        $password = Input::get('password');
+        //dnd($username);
+        if (Validation::isEmpty($username) || Validation::isEmpty($password)){
+            Router::redirect('admin/edit/'.$id, '<p class="alert alert-danger">Please enter proper login credentials</p>');
+        }
+        $user = User::all()->find($id);
+        $user->username = $username;
+        $user->password = md5($password);
+        $user->save();
+        Router::redirect('admin', '<p class="alert alert-success">Information save successfully...!</p>');
+    }
     //List all users
     public function userListAction(){
         $this->restrictUnauthorizedUser();
-        $this->view->render('admin/user', User::all());
+        $this->view->render('admin/user', User::all()->sortBy('role_id'));
     }
 
     //Restrict unauthorized user to access admin panel

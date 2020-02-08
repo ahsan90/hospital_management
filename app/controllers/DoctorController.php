@@ -72,7 +72,7 @@ class DoctorController extends Controller
 
     //Visit doctor's profile
     public function profileAction($id){
-        if (LoginHelper::isACurrentDoctor() || LoginHelper::isAdmin()) {
+        if (LoginHelper::isACurrentDoctor() || LoginHelper::isAdmin() || LoginHelper::isACurrentPatient()) {
             $this->view->render('doctor/profile', Doctor::all()->find($id));
         }else{
             Router::redirect('home', '<p class="alert alert-danger">You are not authorized</p>');

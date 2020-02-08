@@ -35,4 +35,13 @@ class UserHelper
         $patient = Patient::all()->where('healthCardNumber', $healthCardNo)->first();
         return $patient;
     }
+
+    //Count object
+    public static function countObj($objects){
+        $i = 0;
+        foreach ($objects as $object){
+            $i++;
+        }
+        return $i;
+    }
 }

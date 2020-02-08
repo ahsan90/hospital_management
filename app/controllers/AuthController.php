@@ -27,7 +27,7 @@ class AuthController extends Controller
 
         if (LoginHelper::isValidUser($username, $password)){
             //dnd($_SESSION['password']);
-            $msg = "<h2>Login success</h2>";
+            $msg = "<p class='alert alert-success'>Login successful..!</p>";
             if (LoginHelper::isAdmin()){
                 Router::redirect('admin',$msg);
             }
