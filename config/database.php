@@ -1,5 +1,13 @@
 
 <?php
+/*
+ * Author: Md Ahsanul Hoque
+ * Date: January 25, 2020
+ * Purpose: Creating database Schema using Illuminate ORM
+ *
+ */
+
+
 use Illuminate\Database\Capsule\Manager;
 
 //create users table

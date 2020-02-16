@@ -1,7 +1,5 @@
 <?php
-//$doctors = $data;
-//require_once './app/views/layout/header.php';
-$this->setSiteTitle('Doctor listing');
+$this->setSiteTitle('Nurse listing');
 
 $this->start('body');
 if ($data != null){

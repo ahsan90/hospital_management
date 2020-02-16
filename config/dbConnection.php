@@ -1,4 +1,12 @@
 <?php
+/*
+ * Author: Md Ahsanul Hoque
+ * Date: January 23, 2020
+ * Purpose: Establish database connection
+ *
+ */
+
+
 use Illuminate\Database\Capsule\Manager as Capsule;
 //use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;

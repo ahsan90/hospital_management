@@ -1,5 +1,5 @@
 <?php
-$this->setSiteTitle('Book an appointment');
+$this->setSiteTitle('Booking Details');
 
 $this->start('body');
 //

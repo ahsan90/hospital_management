@@ -1,5 +1,5 @@
 <?php
-$this->setSiteTitle('New Nurse Account');
+$this->setSiteTitle('Edit Nurse Account');
 
 $this->start('body');
 

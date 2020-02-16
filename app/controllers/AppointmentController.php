@@ -1,5 +1,10 @@
 <?php
-
+/*
+ * Author: Md Ahsanul Hoque
+ * Date: February 7, 2020
+ * Purpose: Appointment controller for dealing with patient appointment fixing
+ *
+ */
 
 use Illuminate\Support\Facades\DB;
 
@@ -13,16 +18,8 @@ class AppointmentController extends Controller
     //Search doctor and available schedule for fixing an appointment date
 
     public function searchAction(){
-        //dnd(Input::get('healthCardNo'));
 
-//        if(LoginHelper::isAdmin()){
-//            $msg = "<p class='alert alert-warning'>you are not authorized..............</p>";
-//            Router::redirect('home', $msg);
-//        }
-        //dnd(LoginHelper::isACurrentDoctor());
-        //Make sure doctor is not allowed to book appointment
-        //dnd($this->checkIfScheduleAvail(1, "9.00", '2020-02-07'));
-
+        //Make doctor is not allowed to book appointment
         if (LoginHelper::isACurrentDoctor()){
             Router::redirect('home', "<p class='alert alert-danger'>Unauthorized</p>");
         }

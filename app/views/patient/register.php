@@ -1,5 +1,5 @@
 <?php
-$this->setSiteTitle('New Patient');
+$this->setSiteTitle('New Patient Register');
 
 $this->start('body');
 

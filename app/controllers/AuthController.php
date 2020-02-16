@@ -1,5 +1,10 @@
 <?php
-
+/*
+ * Author: Md Ahsanul Hoque
+ * Date: February 7, 2020
+ * Purpose: Controller for dealing with login/logout functionality
+ *
+ */
 
 class AuthController extends Controller
 {
@@ -13,6 +18,7 @@ class AuthController extends Controller
     }
 
     public function loginAction(){
+        //if the user already logged redirect him to home page instead of login page
         if (LoginHelper::isLoggedIn()){
             //dnd('You already logged in....!!');
             Router::redirect('home');
@@ -25,6 +31,7 @@ class AuthController extends Controller
         $password = Input::get('password');
 
 
+        //Validate login and redirect to appropriate profile(admin/doctor/nurse/patient) based on the login credential
         if (LoginHelper::isValidUser($username, $password)){
             //dnd($_SESSION['password']);
             $msg = "<p class='alert alert-success'>Login successful..!</p>";

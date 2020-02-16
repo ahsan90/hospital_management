@@ -1,5 +1,5 @@
 <?php
-$this->setSiteTitle('Doctor Profile');
+$this->setSiteTitle('Login');
 
 $this->start('body');
 

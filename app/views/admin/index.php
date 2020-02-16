@@ -1,4 +1,4 @@
-<?php $this->setSiteTitle("Admin"); ?>
+<?php $this->setSiteTitle("Admin - Home"); ?>
 <?php $this->start('body'); ?>
 
 <div id="admin">

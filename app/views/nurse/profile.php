@@ -22,6 +22,7 @@ $this->start('body');
     </div>
 <?php $nurse = $data;
 if ($nurse != null) { ?>
+    <h2>Your profile information</h2>
     <table class="table table-hover">
         <thead>
         <tr>

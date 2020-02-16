@@ -1,5 +1,5 @@
 <?php
-$this->setSiteTitle('Patient Profile');
+$this->setSiteTitle('Medical Record');
 
 $this->start('body');
 ?>

@@ -1,5 +1,10 @@
 <?php
-
+/*
+ * Author: Md Ahsanul Hoque
+ * Date: February 1, 2020
+ * Purpose:  Controller for for dealing with doctor's data/files
+ *
+ */
 
 class DoctorController extends Controller
 {

@@ -1,7 +1,7 @@
 <?php
 //$doctors = $data;
 //require_once './app/views/layout/header.php';
-$this->setSiteTitle('Doctor listing');
+$this->setSiteTitle('Users List');
 
 $this->start('body');
 

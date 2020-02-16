@@ -1,5 +1,7 @@
 <?php $this->start('body'); ?>
 
+<?php $this->setSiteTitle('About the project');?>
+
 <div class="mt-3">
     <?php if (isset($_SESSION['msg']) || $msg != "" || isset($_REQUEST['msg'])){
         if (isset($_SESSION['msg']))

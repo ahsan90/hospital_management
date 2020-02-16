@@ -1,5 +1,10 @@
 <?php
-
+/*
+ * Author: Md Ahsanul Hoque
+ * Date: February 5, 2020
+ * Purpose: Control the admin page and administrative task
+ *
+ */
 
 class AdminController extends Controller
 {

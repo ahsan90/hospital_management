@@ -1,5 +1,10 @@
 <?php
-
+/*
+ * Author: Md Ahsanul Hoque
+ * Date: January 25, 2020
+ * Purpose: Controller for dealing with nurse activity
+ *
+ */
 
 class NurseController extends Controller
 {
