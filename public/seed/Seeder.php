@@ -92,10 +92,36 @@ class Seeder
             $schedule->save();
         }
     }
+
+    //Create default admin, doctor, patient and nurse login credentials
+
+    public static function createDefaultLoginCredentials(){
+        //create default admin login credentials
+        self::createAdminUser();
+
+        //create doctor's default account with login credentials with an account
+        Doctor::saveValidDoctorInfo(2, "Prof. John Doe", "Male", "Cancer Specialist", "222-333-5555", "johnd@gmail.com",
+            "140 Weymouth St, Charlottetown, PE C1A 4Z1", "johnd", "123");
+
+        //create nurse's default login credentials with an account
+        Nurse::saveValidNurseInfo(3, "Jennifer J.", "Female", "222-444-5555","jennifer@gmail.com", "140 Weymouth St, Charlottetown, PE C1A 4Z1", "jenj", "123");
+
+        //create Patient login credentials with an account
+        $faker = Faker\Factory::create();
+        $dobRange = $faker->dateTimeBetween('-150 years', 'now');
+        Patient::saveValidPatientInfo(4,"Patrick Connor", "11111111", $dobRange, "Male", "333-333-9999", "patrick@gmail.com",
+            "140 Weymouth St, Charlottetown, PE C1A 4Z1", "patrick", "123");
+
+    }
+
     //this method provides seed data to database
     public static function loadSeed(){
         self::roleDbSeed();//create role
-        self::createAdminUser();//create admin user
+
+        //Create default login credential for admin, doctor, nurse and patient separately
+        self::createDefaultLoginCredentials();
+
+        //self::createAdminUser();//create admin user
         self::scheduleSeedData();//create schedule
 
         //create doctors fake data

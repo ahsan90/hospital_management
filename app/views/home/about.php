@@ -85,8 +85,8 @@
         </thead>
         <tbody>
         <tr>
-            <td>Will add it later</td>
-            <td>will add it later</td>
+            <td>johnd</td>
+            <td>123</td>
         </tr>
         </tbody>
     </table>
@@ -101,27 +101,34 @@
         </thead>
         <tbody>
         <tr>
-            <td>Will add it later</td>
-            <td>will add it later</td>
+            <td>jenj</td>
+            <td>123</td>
         </tr>
         </tbody>
     </table>
 
-    <h2>Default Patient Login Credentials</h2>
+    <h2>Default Patient Login Credentials with Health Card Number</h2>
     <table class="table table-info table-bordered">
         <thead>
         <tr>
             <th>Username</th>
             <th>Password</th>
+            <th>Health Card Number</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td>Will add it later</td>
-            <td>will add it later</td>
+            <td>patrick</td>
+            <td>123</td>
+            <td>11111111</td>
         </tr>
+
         </tbody>
     </table>
+
+    <div class="mb-2">
+        <p class="mt-2 text-danger text-left">*Run "php updateDB.php" command to get these default login credential pre-existed in your database</p>
+    </div>
 </div>
 <?php $this->end(); ?>
 

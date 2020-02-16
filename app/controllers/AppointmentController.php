@@ -59,12 +59,9 @@ class AppointmentController extends Controller
                 Router::redirect('appointment/search', '<p class="alert alert-danger">Please enter date</p>');
             }
 
+
             //redirect search page if the user enter past/invalid date
             if (!Validation::isValidBookingDate($datePicked)){
-                //reset the date if invalid
-                $datePicked = date('Y-m-d');
-                $_SESSION['datePicked'] = $datePicked;
-                //$datePicked = "";
                 Router::redirect('appointment/search', '<p class="alert alert-danger">Appointment date cannot be past date</p>');
             }
 
@@ -78,7 +75,7 @@ class AppointmentController extends Controller
                 if (!Validation::isHealthCardExists($healthCardNumber)){
                     //dnd($healthCardNumber);
                     //dnd(Validation::isHealthCardExists($healthCardNumber));
-                    Router::redirect('appointment/search', '<p class="alert alert-danger">Invalid Health Card Number</p>');
+                    Router::redirect('appointment/search', '<p class="alert alert-danger">Health Card Number is not found in the system</p>');
                 }
                 $_SESSION['healthCardNo'] = $healthCardNumber;
             }

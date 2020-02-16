@@ -3,9 +3,6 @@
 
 class LoginHelper
 {
-//    private $username;
-//    private $password;
-//    private $role;
 
     public function __construct()
     {
@@ -42,6 +39,7 @@ class LoginHelper
 
     }
 
+    //Verify username and password for login
     public static function isValidUser($username, $password){
         $flag = false;
 

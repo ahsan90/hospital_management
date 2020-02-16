@@ -34,6 +34,9 @@
                         </li>
                         <?php if (LoginHelper::isAdmin()){?>
                         <li class="nav-item">
+                            <a class="nav-link" href="<?=SROOT?>admin/userlist">User List</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="<?=SROOT?>patient/listing">Patient List</a>
                         </li>
                         <li class="nav-item">

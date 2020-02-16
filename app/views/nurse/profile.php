@@ -112,7 +112,7 @@ if ($count>0){
 
     <?php
 }else{
-    echo "<p class='alert alert-warning mx-auto'>You do not have any appointments yet..</p>";
+    echo "<p class='alert alert-warning mx-auto'>No appointments yet..</p>";
 }
 ?>
 

@@ -176,36 +176,40 @@ class PatientController extends Controller
 
     //update medical record
     public function create_med_record_postAction($id){
-        $this->addRestrictionToMedInfo();
-        //dnd($id);
-        $blood_pressure = Input::get('blood_pressure');
-        $weight = Input::get('weight');
-        $height = Input::get('height');
-        $pulseRate = Input::get('pulseRate');
+        if ($_POST){
+            $this->addRestrictionToMedInfo();
+            //dnd($id);
+            $blood_pressure = Input::get('blood_pressure');
+            $weight = Input::get('weight');
+            $height = Input::get('height');
+            $pulseRate = Input::get('pulseRate');
 
-        if (LoginHelper::isACurrentNurse()){
-            $nurseNote = Input::get('nurseNotes');
-        }
-        if (LoginHelper::isACurrentDoctor()){
-            $diagnose = Input::get('diagnose');
-        }
+            if (LoginHelper::isACurrentNurse()){
+                $nurseNote = Input::get('nurseNotes');
+            }
+            if (LoginHelper::isACurrentDoctor()){
+                $diagnose = Input::get('diagnose');
+            }
 
-        $medicalRecord = new MedicalRecord();
-        $medicalRecord->blood_pressure = $blood_pressure;
-        $medicalRecord->weight = $weight;
-        $medicalRecord->height = $height;
-        $medicalRecord->pulseRate = $pulseRate;
-        if (LoginHelper::isACurrentNurse()){
-            $medicalRecord->nurseNotes = $nurseNote;
-        }
-        if (LoginHelper::isACurrentDoctor()){
-            $medicalRecord->diagnose = $diagnose;
-        }
-        $medicalRecord->patient_id = $id;
+            $medicalRecord = new MedicalRecord();
+            $medicalRecord->blood_pressure = $blood_pressure;
+            $medicalRecord->weight = $weight;
+            $medicalRecord->height = $height;
+            $medicalRecord->pulseRate = $pulseRate;
+            if (LoginHelper::isACurrentNurse()){
+                $medicalRecord->nurseNotes = $nurseNote;
+            }
+            if (LoginHelper::isACurrentDoctor()){
+                $medicalRecord->diagnose = $diagnose;
+            }
+            $medicalRecord->patient_id = $id;
 
-        $medicalRecord->save();
+            $medicalRecord->save();
 
-        Router::redirect('patient/medicalRecord/'.$medicalRecord->id, '<p>Information saved successfully...!</p>');
+            Router::redirect('patient/medicalRecord/'.$medicalRecord->patient_id, '<p>Information saved successfully...!</p>');
+        }else{
+            Router::redirect('patient/create_med_record/'.$id);
+        }
     }
 
     //edit medical record
