@@ -16,7 +16,7 @@ $composer dumpautoload
 
 
 
-Create a database in your phpMyAdmin environment (name it health_db or update config/dbConnection.php file if you want to name is different than ours) and run the following command:
+Create a database in your phpMyAdmin environment (name it health_db or update config/dbConnection.php file if you want to name it different than ours) and run the following command:
 
 $php updateDB.php
 
