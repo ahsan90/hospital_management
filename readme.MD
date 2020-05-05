@@ -5,6 +5,8 @@ FrontEnd: HTML,CSS,JavaScript, JQuery, Bootstrap\
 ThirdParty: Few composer packages including Illuminate, Faker, Email Validator and so on.\
 Framework Reference: https://bit.ly/2SQD5bI
 
+Video Demo: https://bit.ly/2L50G56
+
 -----------------------------------------------------------------------------------------
 
 
@@ -47,7 +49,7 @@ Team members:
 1. Gilebert Obodo:---Project Manager
 2. Kapil Upadhyaya---System Analyst
 3. Amro Daas:--- System Analyst & Developer
-4. Md Ahsanul Hoque:--- Programmer
+4. Md Ahsanul Hoque:--- Programmer Analyst
 
 
 ----------------
